@@ -188,6 +188,60 @@
                 </div>
             </div>
 
+            <!-- SQL Projects Section -->
+            <div class="project-card featured" style="margin-top:2.5rem;">
+                <div style="grid-column:span 2;">
+                    <h2 style="font-size:1.4rem; color:var(--accent-light); margin-bottom:0.3rem;">&#128450; SQL Analytics</h2>
+                    <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:1.5rem;">Production queries powering operational dashboards and safety reporting across the fulfillment network.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon">&#128337;</div>
+                <h3>Inventory Dwell Time Analysis</h3>
+                <div class="project-subtitle">Facility Audit &bull; Inventory Intelligence</div>
+                <p>Multi-join analytical query that calculates container dwell times across an entire fulfillment center by correlating physical container positions with stow/pick activity, bin item data, ASIN attributes, shelf life, and pricing. Parses bin IDs to extract mod, aisle, level, and slot for spatial analysis. Uses temp tables, window functions (ROW_NUMBER), timezone conversion, and COALESCE chains to handle both direct and pallet-nested inventory.</p>
+                <ul class="project-features">
+                    <li>12+ table joins across containers, bin items, stow metrics, pick actions, and ASIN catalogs</li>
+                    <li>Window functions to isolate most recent stow/pick per bin</li>
+                    <li>Spatial bin parsing (mod, aisle, level, slot) for heatmap-ready output</li>
+                    <li>Pallet-nested item resolution via containing_container_id traversal</li>
+                </ul>
+                <div class="project-tech">
+                    <span>SQL</span><span>Redshift</span><span>Window Functions</span><span>CTEs</span><span>Temp Tables</span><span>Timezone Conversion</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon">&#9888;</div>
+                <h3>Overweight Package Safety Report</h3>
+                <div class="project-subtitle">Safety &bull; Automated Alerting</div>
+                <p>CTE-based query that identifies packages exceeding 50 lbs across the facility by joining container physical data with FCSKU mappings, FNSKU-ASIN resolution, and physical item weight attributes. Feeds an automated daily email alert system that routes flagged items to safety teams for team-lift or alternative handling procedures.</p>
+                <ul class="project-features">
+                    <li>Multi-step CTE pipeline: heavy items &rarr; container mapping &rarr; weight enrichment</li>
+                    <li>FCSKU &rarr; FNSKU &rarr; ASIN resolution chain across 3 catalog tables</li>
+                    <li>Directly reduced workplace injuries through proactive rerouting</li>
+                </ul>
+                <div class="project-tech">
+                    <span>SQL</span><span>Redshift</span><span>CTEs</span><span>Multi-Table Joins</span><span>Automated Alerting</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-icon">&#128203;</div>
+                <h3>Standard Work Compliance Monitor</h3>
+                <div class="project-subtitle">Regional Monitoring &bull; Accountability</div>
+                <p>Operational compliance query tracking dirty cage container movements across the network. Calculates dwell times in both days and hours from move date to current, capturing associate IDs, scannable IDs, and container types. Distributed via automated daily email to regional leadership for real-time visibility into standard work completion.</p>
+                <ul class="project-features">
+                    <li>Dwell time calculation in days and hours for SLA tracking</li>
+                    <li>Associate-level accountability with move-by tracking</li>
+                    <li>Pattern-matched container filtering (dirty cage locations)</li>
+                </ul>
+                <div class="project-tech">
+                    <span>SQL</span><span>Redshift</span><span>DATEDIFF</span><span>Pattern Matching</span><span>Automated Distribution</span>
+                </div>
+            </div>
+
         </div>
     </div>
 
