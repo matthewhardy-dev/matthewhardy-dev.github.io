@@ -81,7 +81,7 @@ function drawParticles() {
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(74,158,237,0.8)';
+        ctx.fillStyle = 'rgba(167,139,250,0.8)';
         ctx.fill();
         for (let j = i + 1; j < particles.length; j++) {
             const dx = p.x - particles[j].x, dy = p.y - particles[j].y;
@@ -90,7 +90,7 @@ function drawParticles() {
                 ctx.beginPath();
                 ctx.moveTo(p.x, p.y);
                 ctx.lineTo(particles[j].x, particles[j].y);
-                ctx.strokeStyle = `rgba(74,158,237,${0.4 * (1 - dist / 150)})`;
+                ctx.strokeStyle = `rgba(167,139,250,${0.4 * (1 - dist / 150)})`;
                 ctx.stroke();
             }
         }

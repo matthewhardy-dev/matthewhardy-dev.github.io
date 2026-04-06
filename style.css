@@ -5,15 +5,15 @@
     --bg-primary: #0a0f1a;
     --bg-secondary: #111827;
     --bg-card: #1a2332;
-    --accent: #2e75b6;
-    --accent-light: #4a9eed;
-    --accent-glow: rgba(46, 117, 182, 0.15);
+    --accent: #6d28d9;
+    --accent-light: #7c3aed;
+    --accent-glow: rgba(109, 40, 217, 0.15);
     --text-primary: #e8edf5;
     --text-secondary: #8892a4;
     --text-muted: #5a6478;
     --border: #1e2a3a;
-    --gradient-start: #2e75b6;
-    --gradient-end: #1a4a7a;
+    --gradient-start: #7c3aed;
+    --gradient-end: #4c1d95;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -126,8 +126,8 @@ body {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse at 20% 50%, rgba(46, 117, 182, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(74, 158, 237, 0.05) 0%, transparent 50%);
+        radial-gradient(ellipse at 20% 50%, rgba(124, 58, 237, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(167, 139, 250, 0.05) 0%, transparent 50%);
 }
 
 .hero-content { position: relative; z-index: 1; }
@@ -148,7 +148,7 @@ body {
     font-weight: 700;
     letter-spacing: -1.5px;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-light) 100%);
+    background: linear-gradient(90deg, #a78bfa 0%, #4c1d95 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -197,7 +197,7 @@ body {
 }
 
 .btn-primary { background: var(--accent); color: #fff; }
-.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(46, 117, 182, 0.3); }
+.btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3); }
 
 .btn-outline { border: 1.5px solid var(--border); color: var(--text-primary); background: transparent; }
 .btn-outline:hover { border-color: var(--accent); color: var(--accent-light); }
@@ -364,15 +364,15 @@ section { padding: 5rem 0; background: transparent; }
 
 .tag {
     padding: 0.35rem 0.8rem;
-    background: rgba(46, 117, 182, 0.1);
-    border: 1px solid rgba(46, 117, 182, 0.2);
+    background: rgba(124, 58, 237, 0.1);
+    border: 1px solid rgba(124, 58, 237, 0.2);
     border-radius: 20px;
     font-size: 0.82rem;
     color: var(--text-secondary);
     transition: all 0.2s;
 }
 
-.tag:hover { background: rgba(46, 117, 182, 0.2); color: var(--text-primary); border-color: var(--accent); }
+.tag:hover { background: rgba(124, 58, 237, 0.2); color: var(--text-primary); border-color: var(--accent); }
 
 /* ============================================
    EDUCATION
@@ -474,6 +474,8 @@ footer {
 /* ============================================
    RESPONSIVE
    ============================================ */
+.mobile-resume { display: none; }
+
 /* Tablet: cramped nav with 6 links */
 @media (max-width: 1024px) {
     .nav-links { gap: 1rem; }
@@ -522,7 +524,7 @@ footer {
 
     .nav-links.active .mobile-resume:hover { background: var(--accent-light); }
 
-    .mobile-resume { display: none; }
+    .mobile-resume { display: none !important; }
 
     .hero-tagline { flex-direction: column; gap: 0.3rem; }
     .tagline-divider { display: none; }
