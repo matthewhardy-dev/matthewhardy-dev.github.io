@@ -28,6 +28,10 @@ body {
     overflow-x: hidden;
 }
 
+#particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: var(--bg-primary); }
+
+#navbar, #hero, section, footer { position: relative; z-index: 1; }
+
 /* ============================================
    NAVIGATION
    ============================================ */
@@ -55,11 +59,12 @@ body {
 }
 
 .nav-logo {
-    font-size: 1.4rem;
+    font-family: 'Mr Dafoe', cursive;
+    font-size: 1.6rem;
     font-weight: 700;
     color: var(--accent-light);
     text-decoration: none;
-    letter-spacing: -0.5px;
+    letter-spacing: 0.5px;
 }
 
 .nav-links { display: flex; gap: 2rem; }
@@ -218,7 +223,7 @@ body {
 /* ============================================
    SECTIONS
    ============================================ */
-section { padding: 5rem 0; }
+section { padding: 5rem 0; background: transparent; }
 
 .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
@@ -244,7 +249,7 @@ section { padding: 5rem 0; }
 /* ============================================
    ABOUT
    ============================================ */
-#about { background: var(--bg-secondary); }
+#about { background: rgba(17, 24, 39, 0.85); }
 
 .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 3rem; align-items: start; }
 
@@ -338,7 +343,7 @@ section { padding: 5rem 0; }
 /* ============================================
    SKILLS
    ============================================ */
-#skills { background: var(--bg-secondary); }
+#skills { background: rgba(17, 24, 39, 0.85); }
 
 .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 
@@ -399,7 +404,7 @@ section { padding: 5rem 0; }
 /* ============================================
    CONTACT
    ============================================ */
-#contact { background: var(--bg-secondary); text-align: center; }
+#contact { background: rgba(17, 24, 39, 0.85); text-align: center; }
 
 .contact-text { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2.5rem; }
 
@@ -485,53 +490,18 @@ footer {
         border-bottom: 1px solid var(--border);
     }
 
-    .nav-container { padding: 0 1rem; }
-
-    #hero { min-height: 90vh; padding: 1rem; }
-    .hero-name { font-size: clamp(2rem, 8vw, 3rem); }
     .hero-tagline { flex-direction: column; gap: 0.3rem; }
     .tagline-divider { display: none; }
-    .tagline-item { font-size: 0.9rem; }
-    .hero-actions { flex-direction: column; align-items: center; gap: 0.8rem; }
-    .btn { width: 100%; max-width: 250px; text-align: center; }
-    .scroll-indicator { bottom: 1rem; }
+    .hero-actions { flex-direction: column; align-items: center; }
 
-    section { padding: 3rem 0; }
-    .container { padding: 0 1rem; }
-    .section-title { font-size: 1.5rem; margin-bottom: 2rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-stats { flex-direction: row; }
+    .stat-card { flex: 1; }
 
-    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .about-text p { font-size: 0.92rem; }
-    .about-stats { flex-direction: row; gap: 0.5rem; }
-    .stat-card { flex: 1; padding: 0.8rem 0.5rem; }
-    .stat-number { font-size: 1.5rem; }
-    .stat-suffix { font-size: 0.9rem; }
-    .stat-label { font-size: 0.65rem; letter-spacing: 0.5px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .contact-links { grid-template-columns: 1fr; }
 
-    .timeline { padding-left: 1.5rem; }
-    .timeline-content { padding: 1rem 1.2rem; margin-left: 0.5rem; }
-    .timeline-marker { left: -1.5rem; }
-    .job-header { flex-direction: column; gap: 0.2rem; }
-    .job-header h3 { font-size: 1.1rem; }
     .job-role { flex-direction: column; gap: 0.2rem; }
-    .job-role h4 { font-size: 0.95rem; }
-    .job-bullets li { font-size: 0.85rem; padding-left: 1rem; }
-
-    .skills-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .skill-category { padding: 1.2rem; }
-
-    .edu-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .edu-card { padding: 1.2rem; }
-    .edu-card h3 { font-size: 0.9rem; }
-
-    .contact-links { grid-template-columns: 1fr; gap: 1rem; }
-    .contact-card { padding: 1.2rem; }
-    .contact-value { font-size: 0.8rem; }
-}
-
-@media (max-width: 380px) {
-    .about-stats { flex-direction: column; }
-    .stat-card { padding: 1rem; }
-    .hero-name { font-size: 1.8rem; }
-    .nav-logo { font-size: 1.2rem; }
+    .job-header { flex-direction: column; gap: 0.2rem; }
 }
