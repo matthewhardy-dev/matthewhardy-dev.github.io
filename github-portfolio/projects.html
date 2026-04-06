@@ -48,8 +48,19 @@
         .back-link:hover { color: var(--text-primary); }
 
         @media (max-width: 768px) {
-            .project-grid { grid-template-columns: 1fr; }
-            .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+            .projects-hero { padding: 5rem 0 2rem; }
+            .projects-hero h1 { font-size: 1.8rem; }
+            .projects-hero p { font-size: 0.9rem; padding: 0 1rem; }
+            .project-grid { grid-template-columns: 1fr; gap: 1rem; }
+            .project-card { padding: 1.2rem; }
+            .project-card.featured { grid-column: span 1; grid-template-columns: 1fr; gap: 1rem; }
+            .project-card.featured div[style*="grid-column"] { grid-column: span 1; }
+            .project-card h3 { font-size: 1rem; }
+            .project-card p { font-size: 0.85rem; line-height: 1.6; }
+            .project-features li { font-size: 0.82rem; }
+            .project-tech span { font-size: 0.68rem; }
+            .project-icon { font-size: 1.6rem; }
+            .back-link { font-size: 0.82rem; }
         }
     </style>
 </head>
@@ -61,6 +72,8 @@
             <div class="nav-links">
                 <a href="index.html#about">About</a>
                 <a href="index.html#experience">Experience</a>
+                <a href="index.html#skills">Skills</a>
+                <a href="index.html#education">Education</a>
                 <a href="projects.html">Projects</a>
                 <a href="index.html#contact">Contact</a>
             </div>
@@ -241,6 +254,10 @@
                 <div class="project-tech">
                     <span>SQL</span><span>Redshift</span><span>DATEDIFF</span><span>Pattern Matching</span><span>Automated Distribution</span>
                 </div>
+            </div>
+
+            <div style="grid-column:1/-1;text-align:center;padding:2rem 0 1rem;">
+                <a href="https://matthewhardy-dev.github.io/interactive-resume/" target="_blank" style="display:inline-flex;align-items:center;gap:0.6rem;color:var(--accent-light);text-decoration:none;font-size:0.9rem;font-weight:600;padding:0.8rem 1.8rem;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);transition:all 0.3s;" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 4px 20px var(--accent-glow)'" onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='none'">&#128187; View Interactive Resume &rarr;</a>
             </div>
 
         </div>
