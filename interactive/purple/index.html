@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matthew Hardy | Interactive Resume — Midnight</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0c0a14;
+            --card: #151028;
+            --border: #251e40;
+            --accent: #8b5cf6;
+            --accent-light: #a78bfa;
+            --glow: rgba(139,92,246,0.15);
+            --text: #ede8f5;
+            --text2: #9088a4;
+            --text3: #655e78;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
+
+        /* ---- PARTICLE CANVAS ---- */
+        #particles { position:fixed; inset:0; z-index:0; pointer-events:none; }
+
+        /* ---- TERMINAL HEADER ---- */
+        .terminal {
+            position:relative; z-index:1;
+            max-width:900px; margin:3rem auto 0; padding:0;
+            background:var(--card); border:1px solid var(--border); border-radius:12px;
+            overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.4);
+        }
+        .terminal-bar {
+            display:flex; align-items:center; gap:8px;
+            padding:12px 16px; background:#080610; border-bottom:1px solid var(--border);
+        }
+        .terminal-dot { width:12px; height:12px; border-radius:50%; }
+        .terminal-dot.r { background:#ef4444; }
+        .terminal-dot.y { background:#a78bfa; }
+        .terminal-dot.g { background:#8b5cf6; }
+        .terminal-title { margin-left:auto; font-size:0.75rem; color:var(--text3); font-family:'JetBrains Mono',monospace; }
+        .terminal-body { padding:2rem 2.5rem 2.5rem; }
+
+        .typing-line {
+            font-family:'JetBrains Mono',monospace; font-size:0.85rem; color:#a78bfa;
+            margin-bottom:1.5rem; min-height:1.3em;
+        }
+        .typing-line .cursor { animation:blink 1s step-end infinite; }
+        @keyframes blink { 50% { opacity:0; } }
+
+        .hero-name {
+            font-size:clamp(2rem,5vw,3.2rem); font-weight:700; letter-spacing:-1px;
+            background:linear-gradient(135deg,var(--text),var(--accent-light));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+        }
+        .hero-tagline { color:var(--text2); font-size:1rem; margin:0.5rem 0 0.3rem; }
+        .hero-location { color:var(--text3); font-size:0.85rem; }
+
+        /* ---- MAIN CONTENT ---- */
+        .content { position:relative; z-index:1; max-width:900px; margin:0 auto; padding:0 1rem 4rem; }
+
+        /* ---- SECTION TABS ---- */
+        .tab-bar {
+            display:flex; gap:0; margin:2rem 0 0;
+            background:var(--card); border:1px solid var(--border); border-radius:10px;
+            overflow:hidden; position:sticky; top:0; z-index:10;
+        }
+        .tab-btn {
+            flex:1; padding:0.9rem; text-align:center;
+            background:transparent; border:none; color:var(--text3);
+            font-family:'Inter',sans-serif; font-size:0.85rem; font-weight:600;
+            cursor:pointer; transition:all 0.25s; position:relative;
+        }
+        .tab-btn:hover { color:var(--text2); background:rgba(139,92,246,0.05); }
+        .tab-btn.active { color:var(--accent-light); background:rgba(139,92,246,0.1); }
+        .tab-btn.active::after {
+            content:''; position:absolute; bottom:0; left:20%; right:20%;
+            height:2px; background:var(--accent); border-radius:2px;
+        }
+
+        .tab-panel { display:none; animation:fadeUp 0.4s ease; }
+        .tab-panel.active { display:block; }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(15px); } to { opacity:1; transform:translateY(0); } }
+
+        /* ---- EXPERIENCE CARDS ---- */
+        .exp-card {
+            background:var(--card); border:1px solid var(--border); border-radius:10px;
+            padding:1.5rem 2rem; margin-top:1.5rem; transition:all 0.3s;
+            cursor:pointer; position:relative; overflow:hidden;
+        }
+        .exp-card::before {
+            content:''; position:absolute; left:0; top:0; bottom:0; width:3px;
+            background:var(--accent); border-radius:0 2px 2px 0; opacity:0; transition:opacity 0.3s;
+        }
+        .exp-card:hover { border-color:var(--accent); box-shadow:0 4px 20px var(--glow); }
+        .exp-card:hover::before { opacity:1; }
+        .exp-company { font-size:1.15rem; font-weight:700; color:var(--accent-light); }
+        .exp-meta { font-size:0.85rem; color:var(--text3); margin:0.2rem 0 0.5rem; }
+        .exp-role { font-weight:600; font-size:1rem; margin-bottom:0.6rem; }
+        .exp-bullets { list-style:none; padding:0; max-height:0; overflow:hidden; transition:max-height 0.5s ease; }
+        .exp-card.open .exp-bullets { max-height:2000px; }
+        .exp-bullets li {
+            position:relative; padding-left:1.2rem; margin-bottom:0.5rem;
+            color:var(--text2); font-size:0.9rem; line-height:1.6;
+        }
+        .exp-bullets li::before { content:'▸'; position:absolute; left:0; color:var(--accent); font-weight:700; }
+        .exp-toggle {
+            font-size:0.8rem; color:var(--accent-light); display:inline-flex; align-items:center; gap:4px;
+            margin-top:0.5rem; font-weight:500;
+        }
+        .exp-toggle .arrow { transition:transform 0.3s; display:inline-block; }
+        .exp-card.open .exp-toggle .arrow { transform:rotate(90deg); }
+
+        /* ---- SKILLS ---- */
+        .skill-group { margin-top:1.5rem; }
+        .skill-group-title { font-size:0.8rem; color:var(--accent-light); text-transform:uppercase; letter-spacing:1.5px; font-weight:600; margin-bottom:0.8rem; }
+        .skill-bars { display:flex; flex-direction:column; gap:0.7rem; }
+        .skill-row { display:flex; align-items:center; gap:1rem; }
+        .skill-name { width:120px; font-size:0.88rem; color:var(--text2); text-align:right; }
+        .skill-bar-bg { flex:1; height:8px; background:var(--border); border-radius:4px; overflow:hidden; }
+        .skill-bar-fill { height:100%; border-radius:4px; width:0; transition:width 1.2s cubic-bezier(0.4,0,0.2,1); }
+        .skill-bar-fill.blue { background:linear-gradient(90deg,#7c3aed,#a78bfa); }
+        .skill-bar-fill.green { background:linear-gradient(90deg,#059669,#34d399); }
+        .skill-bar-fill.yellow { background:linear-gradient(90deg,#d97706,#f59e0b); }
+        .skill-pct { width:40px; font-size:0.8rem; color:var(--text3); font-family:'JetBrains Mono',monospace; }
+
+        /* ---- EDUCATION ---- */
+        .edu-item {
+            display:flex; gap:1.5rem; align-items:flex-start;
+            background:var(--card); border:1px solid var(--border); border-radius:10px;
+            padding:1.3rem 1.8rem; margin-top:1rem; transition:all 0.3s;
+        }
+        .edu-item:hover { border-color:var(--accent); box-shadow:0 4px 20px var(--glow); }
+        .edu-year { font-size:0.8rem; color:var(--accent-light); font-weight:600; white-space:nowrap; min-width:90px; padding-top:2px; }
+        .edu-info h3 { font-size:0.95rem; font-weight:600; }
+        .edu-info p { font-size:0.85rem; color:var(--text3); }
+
+        /* ---- PROJECTS ---- */
+        .proj-card {
+            background:var(--card); border:1px solid var(--border); border-radius:10px;
+            padding:1.5rem 2rem; margin-top:1.5rem; transition:all 0.3s;
+            display:flex; gap:1.2rem; align-items:flex-start;
+        }
+        .proj-card:hover { border-color:var(--accent); box-shadow:0 4px 20px var(--glow); transform:translateY(-2px); }
+        .proj-icon { font-size:2rem; flex-shrink:0; padding-top:0.2rem; }
+        .proj-body h3 { font-size:1.05rem; font-weight:700; color:var(--accent-light); margin-bottom:0.2rem; }
+        .proj-sub { font-size:0.75rem; color:var(--text3); text-transform:uppercase; letter-spacing:1px; margin-bottom:0.8rem; }
+        .proj-body p { color:var(--text2); font-size:0.88rem; line-height:1.6; margin-bottom:0.8rem; }
+        .proj-tags { display:flex; flex-wrap:wrap; gap:0.4rem; }
+        .proj-tags span {
+            padding:0.2rem 0.6rem; background:rgba(139,92,246,0.1); border:1px solid rgba(139,92,246,0.2);
+            border-radius:15px; font-size:0.72rem; color:var(--text2);
+        }
+        .proj-card.featured { border-color:rgba(139,92,246,0.3); }
+        .proj-card.featured .proj-icon { font-size:2.5rem; }
+
+        /* ---- CONTACT ---- */
+        .contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.5rem; }
+        .contact-item {
+            background:var(--card); border:1px solid var(--border); border-radius:10px;
+            padding:1.5rem; text-align:center; text-decoration:none; color:inherit; transition:all 0.3s;
+        }
+        .contact-item:hover { border-color:var(--accent); box-shadow:0 4px 20px var(--glow); transform:translateY(-3px); }
+        .contact-icon { font-size:1.5rem; margin-bottom:0.5rem; color:var(--accent-light); font-weight:700; }
+        .contact-label { font-size:0.75rem; color:var(--text3); text-transform:uppercase; letter-spacing:1px; }
+        .contact-val { font-size:0.82rem; color:var(--text2); margin-top:0.3rem; word-break:break-all; }
+
+        /* ---- RESPONSIVE ---- */
+        @media(max-width:600px) {
+            .terminal { margin:1rem 0.5rem 0; }
+            .terminal-body { padding:1.5rem; }
+            .tab-btn { font-size:0.75rem; padding:0.7rem 0.3rem; }
+            .contact-grid { grid-template-columns:1fr; }
+            .skill-name { width:80px; font-size:0.8rem; }
+            .edu-item { flex-direction:column; gap:0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- Terminal Hero -->
+<div class="terminal">
+    <div class="terminal-bar">
+        <div class="terminal-dot r"></div>
+        <div class="terminal-dot y"></div>
+        <div class="terminal-dot g"></div>
+        <span class="terminal-title">matthew_hardy_resume.sh</span>
+    </div>
+    <div class="terminal-body">
+        <div class="typing-line" id="typingLine"></div>
+        <h1 class="hero-name">Matthew Hardy</h1>
+        <p class="hero-tagline">Data Engineering & Analytics &nbsp;|&nbsp; Full-Stack Automation &nbsp;|&nbsp; AWS Cloud & Security</p>
+        <p class="hero-location">Greater Harrisburg Area</p>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="content">
+
+    <!-- Tabs -->
+    <div class="tab-bar">
+        <button class="tab-btn active" data-tab="experience">Experience</button>
+        <button class="tab-btn" data-tab="skills">Skills</button>
+        <button class="tab-btn" data-tab="education">Education</button>
+        <button class="tab-btn" data-tab="projects">Projects</button>
+        <button class="tab-btn" data-tab="contact">Contact</button>
+    </div>
+
+    <!-- Experience -->
+    <div class="tab-panel active" id="experience">
+
+        <div class="exp-card open">
+            <div class="exp-company">Amazon <span style="font-weight:400;font-size:0.85rem;color:var(--text3);">&mdash; 3 years 6 months</span></div>
+            <div class="exp-role">Data Analyst</div>
+            <div class="exp-meta">August 2024 &ndash; Present &nbsp;|&nbsp; United States</div>
+            <ul class="exp-bullets">
+                <li>Spearheaded an end-to-end facility launch &mdash; from legacy decommission to full operational standup &mdash; owning capacity planning, zone configuration, and process validation with zero critical disruptions.</li>
+                <li>Led a full-scale infrastructure audit of a 1M+ sq ft facility, resolving over a decade of capacity misalignment &mdash; restructuring layouts, correcting system-to-physical discrepancies, and optimizing pathing to protect SLAs and associate safety.</li>
+                <li>Built a real-time capacity management platform with automated controls across drop zones and pick areas, eliminating overflow incidents and transforming reactive safety responses into preventive operations.</li>
+                <li>Developed a network-wide inventory governance platform with automated daily reporting, giving leadership visibility into revenue leakage and enabling targeted corrective actions at scale.</li>
+                <li>Designed a regional compliance monitoring system that surfaced real-time accountability metrics, enabling operations teams to enforce standard work consistency across a newly established network.</li>
+                <li>Architected automated safety reporting systems using SQL that proactively identified and rerouted high-risk packages, directly reducing workplace injuries.</li>
+                <li>Created executive-facing analytics using QuickSight that distilled complex operational data into decision-ready insights for senior leadership.</li>
+                <li>Delivered automation tools that eliminated manual pick path planning and bulk inventory processing, reclaiming associate hours and accelerating fulfillment throughput.</li>
+                <li>Partnered with AWS security and engineering teams to resolve critical (Sev2) vulnerabilities with rapid turnaround, maintaining system integrity under tight SLAs.</li>
+            </ul>
+            <div class="exp-toggle"><span class="arrow">▸</span> Click to collapse</div>
+        </div>
+
+        <div class="exp-card">
+            <div class="exp-role">Supervisor</div>
+            <div class="exp-meta">March 2023 &ndash; August 2024 &nbsp;|&nbsp; United States</div>
+            <ul class="exp-bullets">
+                <li>Developed automation macros that reduced a 1-hour manual process to 10 minutes &mdash; an 83% efficiency gain adopted across team workflows.</li>
+                <li>Independently identified and built automation solutions that reclaimed significant operational hours for strategic initiatives.</li>
+            </ul>
+            <div class="exp-toggle"><span class="arrow">▸</span> Click to expand</div>
+        </div>
+
+        <div class="exp-card">
+            <div class="exp-role">Problem Solver / Ambassador</div>
+            <div class="exp-meta">November 2022 &ndash; March 2023 &nbsp;|&nbsp; United States</div>
+            <ul class="exp-bullets">
+                <li>Served as Subject Matter Expert conducting audits and managing AWS programs (FC Research, GraVis, Eagle Eye) to support operational excellence.</li>
+                <li>Directed and coached associates, delivered training, and authored standard work procedures to improve team performance and workflow accuracy.</li>
+            </ul>
+            <div class="exp-toggle"><span class="arrow">▸</span> Click to expand</div>
+        </div>
+
+        <div class="exp-card">
+            <div class="exp-company">Self-Employed</div>
+            <div class="exp-role">Investment Analyst</div>
+            <div class="exp-meta">June 2010 &ndash; Present &nbsp;|&nbsp; United States</div>
+            <ul class="exp-bullets">
+                <li>Built proprietary financial analysis tools using thinkScript for rapid interpretation of chart patterns across day and swing trading strategies.</li>
+                <li>Automated real-time news collection via APIs for 50+ companies, augmenting fundamental analysis with comprehensive market event coverage.</li>
+                <li>Applied advanced technical analysis (Regression, Wyckoff Accumulation/Distribution) to enhance predictive modeling informed by macroeconomic indicators.</li>
+            </ul>
+            <div class="exp-toggle"><span class="arrow">▸</span> Click to expand</div>
+        </div>
+
+        <div class="exp-card">
+            <div class="exp-company">Scientific Games</div>
+            <div class="exp-role">Analyst</div>
+            <div class="exp-meta">January 2014 &ndash; August 2017 &nbsp;|&nbsp; United States</div>
+            <ul class="exp-bullets">
+                <li>Enhanced lottery machine monitoring using expertise in Random Number Generators and security features, improving anomaly detection by 15%.</li>
+                <li>Streamlined automated machine update cycles, reducing technology deployment times by 20%.</li>
+                <li>Maintained stringent security clearance and protocols for systems critical to lottery integrity.</li>
+            </ul>
+            <div class="exp-toggle"><span class="arrow">▸</span> Click to expand</div>
+        </div>
+
+    </div>
+
+    <!-- Skills -->
+    <div class="tab-panel" id="skills">
+        <div class="skill-group">
+            <div class="skill-group-title">Languages</div>
+            <div class="skill-bars">
+                <div class="skill-row"><span class="skill-name">Python</span><div class="skill-bar-bg"><div class="skill-bar-fill blue" data-width="92"></div></div><span class="skill-pct">92%</span></div>
+                <div class="skill-row"><span class="skill-name">SQL</span><div class="skill-bar-bg"><div class="skill-bar-fill blue" data-width="95"></div></div><span class="skill-pct">95%</span></div>
+                <div class="skill-row"><span class="skill-name">VBA</span><div class="skill-bar-bg"><div class="skill-bar-fill blue" data-width="88"></div></div><span class="skill-pct">88%</span></div>
+                <div class="skill-row"><span class="skill-name">JavaScript</span><div class="skill-bar-bg"><div class="skill-bar-fill blue" data-width="82"></div></div><span class="skill-pct">82%</span></div>
+                <div class="skill-row"><span class="skill-name">HTML / CSS</span><div class="skill-bar-bg"><div class="skill-bar-fill blue" data-width="85"></div></div><span class="skill-pct">85%</span></div>
+            </div>
+        </div>
+        <div class="skill-group">
+            <div class="skill-group-title">Analytics & Visualization</div>
+            <div class="skill-bars">
+                <div class="skill-row"><span class="skill-name">QuickSight</span><div class="skill-bar-bg"><div class="skill-bar-fill green" data-width="90"></div></div><span class="skill-pct">90%</span></div>
+                <div class="skill-row"><span class="skill-name">Tableau</span><div class="skill-bar-bg"><div class="skill-bar-fill green" data-width="78"></div></div><span class="skill-pct">78%</span></div>
+                <div class="skill-row"><span class="skill-name">Power BI</span><div class="skill-bar-bg"><div class="skill-bar-fill green" data-width="75"></div></div><span class="skill-pct">75%</span></div>
+                <div class="skill-row"><span class="skill-name">MS Excel</span><div class="skill-bar-bg"><div class="skill-bar-fill green" data-width="96"></div></div><span class="skill-pct">96%</span></div>
+            </div>
+        </div>
+        <div class="skill-group">
+            <div class="skill-group-title">Cloud & Security</div>
+            <div class="skill-bars">
+                <div class="skill-row"><span class="skill-name">AWS</span><div class="skill-bar-bg"><div class="skill-bar-fill yellow" data-width="85"></div></div><span class="skill-pct">85%</span></div>
+                <div class="skill-row"><span class="skill-name">Selenium</span><div class="skill-bar-bg"><div class="skill-bar-fill yellow" data-width="80"></div></div><span class="skill-pct">80%</span></div>
+                <div class="skill-row"><span class="skill-name">Cybersecurity</span><div class="skill-bar-bg"><div class="skill-bar-fill yellow" data-width="78"></div></div><span class="skill-pct">78%</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Education -->
+    <div class="tab-panel" id="education">
+        <div class="edu-item">
+            <div class="edu-year">2025 – 2027</div>
+            <div class="edu-info">
+                <h3>Bachelor of Science, Computer Science</h3>
+                <p>Western Governors University</p>
+            </div>
+        </div>
+        <div class="edu-item">
+            <div class="edu-year">2024</div>
+            <div class="edu-info">
+                <h3>Certification, Cybersecurity</h3>
+                <p>Correlation One</p>
+            </div>
+        </div>
+        <div class="edu-item">
+            <div class="edu-year">2023</div>
+            <div class="edu-info">
+                <h3>Honors Certification, Software Development</h3>
+                <p>Correlation One</p>
+            </div>
+        </div>
+        <div class="edu-item">
+            <div class="edu-year">2023</div>
+            <div class="edu-info">
+                <h3>Certification, Cloud Engineering</h3>
+                <p>AWS Cloud Institute / Skillbuilder</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="tab-panel" id="projects">
+        <div class="proj-card featured">
+            <div class="proj-icon">🔥</div>
+            <div class="proj-body">
+                <h3>Goldilocks — Capacity Management Platform</h3>
+                <div class="proj-sub">Real-Time Monitoring • Automated Controls</div>
+                <p>Full-stack desktop app monitoring bin, bay, and aisle utilization across drop zones and pick areas. Color-coded heatmap view, automated lock/unlock via BinConf API, 15-min auto-refresh. Captures API params on first run then switches to direct HTTP calls — 13x faster than Selenium scraping.</p>
+                <div class="proj-tags"><span>Python</span><span>Tkinter</span><span>Selenium</span><span>REST APIs</span><span>OpenPyXL</span><span>Threading</span></div>
+            </div>
+        </div>
+        <div class="proj-card">
+            <div class="proj-icon">🚨</div>
+            <div class="proj-body">
+                <h3>Andon Monitor</h3>
+                <div class="proj-sub">Alert Tracking • Analytics Dashboard</div>
+                <p>Real-time andon monitoring with dwell time analysis (0-12h, 12-24h, 24-48h, 48h+), weekly top puller rankings, Lighthouse cycle count integration, and automated CSV exports with pivot table generation. Hidden browser operation via Win32 API.</p>
+                <div class="proj-tags"><span>Python</span><span>Tkinter</span><span>Selenium</span><span>Win32 API</span><span>Excel COM</span></div>
+            </div>
+        </div>
+        <div class="proj-card">
+            <div class="proj-icon">🗺</div>
+            <div class="proj-body">
+                <h3>Pick Path Generator</h3>
+                <div class="proj-sub">Aisle Sorting • Path Optimization</div>
+                <p>Automated pick path tool sorting bins by aisle, shelf, and slot with configurable snake or zig-zag patterns. Supports even/odd slot filtering, dual-aisle interleaving, 6 shelf sort modes, and 200-row configuration for full facility planning.</p>
+                <div class="proj-tags"><span>Python</span><span>Pandas</span><span>Tkinter</span><span>OpenPyXL</span><span>CSV</span></div>
+            </div>
+        </div>
+        <div class="proj-card">
+            <div class="proj-icon">🗑</div>
+            <div class="proj-body">
+                <h3>Bulk Delete & Sideline Tool</h3>
+                <div class="proj-sub">Inventory Management • Browser Automation</div>
+                <p>Dual-tab automation for mass item deletion (AFT) and sidelining (Poirot). Full workflow: scan, select, confirm, log. Supports CSV bulk uploads, session reuse across runs, and structured Excel log exports with container, ASIN, and cost data.</p>
+                <div class="proj-tags"><span>Python</span><span>Selenium</span><span>Tkinter</span><span>OpenPyXL</span><span>CSV</span></div>
+            </div>
+        </div>
+        <div class="proj-card">
+            <div class="proj-icon">🚚</div>
+            <div class="proj-body">
+                <h3>Inbound Flow Monitor</h3>
+                <div class="proj-sub">Real-Time Tracking • Web Dashboard</div>
+                <p>Web-based inbound monitoring integrated with FMC. Tracks VRIDs, pallets, units, and door assignments in real time with auto-refresh, multi-page dashboard, analytics, and multi-user credential support.</p>
+                <div class="proj-tags"><span>Python</span><span>Flask</span><span>HTML/CSS/JS</span><span>Selenium</span><span>FMC API</span></div>
+            </div>
+        </div>
+        <div class="proj-card">
+            <div class="proj-icon">📈</div>
+            <div class="proj-body">
+                <h3>WAVE DPT — Damaged Inventory Tracker</h3>
+                <div class="proj-sub">Quality Monitoring • Automated Reporting</div>
+                <p>Automated scraper for FC Quality damaged inventory data. Pulls defect data via Selenium, processes through Excel macros, and generates actionable reports for inventory governance and deletion cost tracking.</p>
+                <div class="proj-tags"><span>Python</span><span>Selenium</span><span>Excel/VBA</span><span>JSON Config</span></div>
+            </div>
+        </div>
+        <div class="proj-card" style="margin-top:2.5rem;border-color:rgba(139,92,246,0.3);">
+            <div class="proj-icon" style="font-size:2.2rem;">&#128450;</div>
+            <div class="proj-body">
+                <h3 style="font-size:1.15rem;">SQL Analytics</h3>
+                <div class="proj-sub">Production queries powering dashboards and safety reporting across the network</div>
+            </div>
+        </div>
+        <div class="proj-card">
+            <div class="proj-icon">&#128337;</div>
+            <div class="proj-body">
+                <h3>Inventory Dwell Time Analysis</h3>
+                <div class="proj-sub">Facility Audit &bull; Inventory Intelligence</div>
+                <p>Multi-join query calculating container dwell times across an entire FC. Correlates physical positions with stow/pick activity, bin items, ASIN attributes, shelf life, and pricing. Parses bin IDs into mod/aisle/level/slot. 12+ table joins, window functions, temp tables, and pallet-nested item resolution.</p>
+                <div class="proj-tags"><span>SQL</span><span>Redshift</span><span>Window Functions</span><span>CTEs</span><span>Temp Tables</span></div>
+            </div>
+        </div>
+        <div class="proj-card">
+            <div class="proj-icon">&#9888;</div>
+            <div class="proj-body">
+                <h3>Overweight Package Safety Report</h3>
+                <div class="proj-sub">Safety &bull; Automated Alerting</div>
+                <p>CTE pipeline identifying packages exceeding 50 lbs by joining containers with FCSKU &rarr; FNSKU &rarr; ASIN resolution and physical weight attributes. Feeds automated daily email alerts to safety teams, directly reducing workplace injuries through proactive rerouting.</p>
+                <div class="proj-tags"><span>SQL</span><span>Redshift</span><span>CTEs</span><span>Multi-Table Joins</span><span>Automated Alerting</span></div>
+            </div>
+        </div>
+        <div class="proj-card">
+            <div class="proj-icon">&#128203;</div>
+            <div class="proj-body">
+                <h3>Standard Work Compliance Monitor</h3>
+                <div class="proj-sub">Regional Monitoring &bull; Accountability</div>
+                <p>Tracks dirty cage container movements across the network with dwell times in days/hours, associate-level accountability, and pattern-matched filtering. Distributed via automated daily email to regional leadership for standard work compliance visibility.</p>
+                <div class="proj-tags"><span>SQL</span><span>Redshift</span><span>DATEDIFF</span><span>Pattern Matching</span><span>Automated Distribution</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="tab-panel" id="contact">
+        <div class="contact-grid">
+            <a href="mailto:matthewhardy.dev@gmail.com" class="contact-item">
+                <div class="contact-icon">✉</div>
+                <div class="contact-label">Email</div>
+                <div class="contact-val">matthewhardy.dev@gmail.com</div>
+            </a>
+            <a href="https://www.linkedin.com/in/matthewhardy-dev" target="_blank" class="contact-item">
+                <div class="contact-icon">in</div>
+                <div class="contact-label">LinkedIn</div>
+                <div class="contact-val">linkedin.com/in/matthewhardy-dev</div>
+            </a>
+            <a href="https://github.com/matthewhardy-dev" target="_blank" class="contact-item">
+                <div class="contact-icon">💻</div>
+                <div class="contact-label">GitHub</div>
+                <div class="contact-val">github.com/matthewhardy-dev</div>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// ---- PARTICLE BACKGROUND ----
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+window.addEventListener('resize', resize);
+resize();
+
+for (let i = 0; i < 60; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        r: Math.random() * 1.5 + 0.5
+    });
+}
+
+function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p, i) => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(139,92,246,0.4)';
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+            const dx = p.x - particles[j].x, dy = p.y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.strokeStyle = `rgba(139,92,246,${0.15 * (1 - dist / 120)})`;
+                ctx.stroke();
+            }
+        }
+    });
+    requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// ---- TYPING ANIMATION ----
+const line = document.getElementById('typingLine');
+const text = '$ cat resume.json | grep "Matthew Hardy" --highlights';
+let idx = 0;
+function type() {
+    if (idx <= text.length) {
+        line.innerHTML = text.slice(0, idx) + '<span class="cursor">|</span>';
+        idx++;
+        setTimeout(type, 35 + Math.random() * 30);
+    } else {
+        line.innerHTML = text + '<span class="cursor">|</span>';
+    }
+}
+type();
+
+// ---- TABS ----
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.tab).classList.add('active');
+
+        // Animate skill bars when skills tab opens
+        if (btn.dataset.tab === 'skills') {
+            setTimeout(() => {
+                document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+                    bar.style.width = bar.dataset.width + '%';
+                });
+            }, 100);
+        }
+    });
+});
+
+// ---- EXPANDABLE CARDS ----
+document.querySelectorAll('.exp-card').forEach(card => {
+    card.addEventListener('click', () => {
+        card.classList.toggle('open');
+        const toggle = card.querySelector('.exp-toggle');
+        if (toggle) toggle.lastChild.textContent = card.classList.contains('open') ? ' Click to collapse' : ' Click to expand';
+    });
+});
+</script>
+</body>
+</html>
