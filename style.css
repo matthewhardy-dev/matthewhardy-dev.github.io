@@ -474,7 +474,18 @@ footer {
 /* ============================================
    RESPONSIVE
    ============================================ */
-.nav-cta-mobile { display: none; }
+.nav-cta-mobile {
+    padding: 0.5rem 1.2rem;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.nav-cta-mobile:hover { background: var(--accent-light); transform: translateY(-1px); }
 
 /* Tablet: cramped nav with 6 links */
 @media (max-width: 1024px) {
@@ -484,7 +495,7 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .nav-links, .nav-cta { display: none; }
+    .nav-links, .nav-cta-mobile { display: none; }
     .nav-toggle { display: block; }
 
     .nav-links.active {
@@ -508,6 +519,8 @@ footer {
         border-radius: 6px;
         font-size: 0.9rem;
         border-bottom: none;
+        color: #fff !important;
+        background: var(--accent);
     }
 
     .nav-links.active a {
