@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matthew Hardy | Data Engineering & Analytics</title>
+    <meta name="description" content="Data Analyst and Software Developer with 3+ years at Amazon and 15+ years across analytics, automation, and cybersecurity.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Matthew Hardy | Data Engineering & Analytics">
+    <meta property="og:description" content="Data Analyst and Software Developer — building data pipelines, automated reporting platforms, and full-stack applications.">
+    <meta property="og:url" content="https://matthewhardy-dev.github.io">
+    <meta property="og:site_name" content="Matthew Hardy Portfolio">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -331,9 +341,10 @@
             <span class="status-dot"></span>
             Open to new opportunities
         </div>
-        <p>&copy; 2025 Matthew Hardy. All rights reserved.</p>
+        <p>&copy; <span id="year"></span> Matthew Hardy. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
