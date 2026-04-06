@@ -301,6 +301,23 @@
         <p>&copy; <span id="year"></span> Matthew Hardy. All rights reserved.</p>
     </footer>
     <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script>
+    document.fonts.ready.then(() => {
+        const c = document.createElement('canvas');
+        c.width = 64; c.height = 64;
+        const x = c.getContext('2d');
+        const g = x.createLinearGradient(0, 0, 64, 64);
+        g.addColorStop(0, '#7c3aed'); g.addColorStop(1, '#4c1d95');
+        x.beginPath(); x.roundRect(0, 0, 64, 64, 12); x.fillStyle = g; x.fill();
+        x.font = "42px 'Mr Dafoe', cursive";
+        x.fillStyle = '#e8edf5';
+        x.textAlign = 'center';
+        x.textBaseline = 'middle';
+        x.fillText('M', 32, 36);
+        const link = document.querySelector("link[rel='icon']");
+        if (link) link.href = c.toDataURL('image/png');
+    });
+    </script>
 
     <script>
         document.getElementById('navbar').classList.add('scrolled');
