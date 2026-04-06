@@ -9,44 +9,57 @@
     <link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        .projects-hero { padding: 1rem 0 0; text-align: center; margin-top: 0; }
+        .projects-hero { padding: 6rem 0 0; text-align: center; margin-top: 0; position: relative; z-index: 1; }
         .projects-hero h1 { font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--text-primary), var(--accent-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .projects-hero p { color: var(--text-secondary); font-size: 1.05rem; margin-top: 0.8rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-
-        .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; padding-bottom: 4rem; margin-top: 0; }
-
-        .project-card {
-            background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
-            padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden;
-        }
-        .project-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light)); opacity: 0; transition: opacity 0.3s;
-        }
+        .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; padding-bottom: 4rem; margin-top: 0; position: relative; z-index: 1; }
+        .project-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; transition: all 0.3s; position: relative; overflow: hidden; }
+        .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); opacity: 0; transition: opacity 0.3s; }
         .project-card:hover { border-color: var(--accent); box-shadow: 0 8px 30px var(--accent-glow); transform: translateY(-3px); }
         .project-card:hover::before { opacity: 1; }
-
         .project-icon { font-size: 2rem; margin-bottom: 1rem; }
         .project-card h3 { font-size: 1.15rem; font-weight: 700; color: var(--accent-light); margin-bottom: 0.3rem; }
         .project-subtitle { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
         .project-card p { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.7; margin-bottom: 1.2rem; }
-
         .project-features { list-style: none; padding: 0; margin-bottom: 1.2rem; }
         .project-features li { position: relative; padding-left: 1.2rem; margin-bottom: 0.4rem; color: var(--text-secondary); font-size: 0.88rem; }
         .project-features li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
-
         .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-        .project-tech span {
-            padding: 0.25rem 0.6rem; background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2);
-            border-radius: 15px; font-size: 0.75rem; color: var(--text-secondary);
+        .project-tech span { padding: 0.25rem 0.6rem; background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2); border-radius: 15px; font-size: 0.75rem; color: var(--text-secondary); transition: all 0.2s; }
+        .project-tech span:hover { background: rgba(124,58,237,0.25); color: var(--text-primary); border-color: var(--accent); box-shadow: 0 0 8px rgba(124,58,237,0.2); }
+
+        /* Filter tabs */
+        .filter-tabs { display: flex; gap: 0.6rem; justify-content: center; margin-top: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .filter-tab {
+            padding: 0.45rem 1.2rem; border-radius: 20px; font-size: 0.82rem; font-weight: 600;
+            border: 1px solid var(--accent); background: rgba(124,58,237,0.25); color: #a78bfa;
+            cursor: pointer; transition: all 0.25s;
+        }
+        .filter-tab:hover { border-color: var(--accent-light); color: #fff; background: rgba(124,58,237,0.4); }
+        .filter-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+        /* Project count badge */
+        .project-count {
+            display: inline-block; font-size: 0.85rem; font-weight: 600; color: var(--accent-light);
+            background: rgba(124,58,237,0.15); padding: 0.2rem 0.7rem; border-radius: 12px;
+            margin-left: 0.5rem; vertical-align: middle;
         }
 
+        /* CTA button for interactive resume */
+        .projects-cta {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            padding: 0.9rem 2rem; background: var(--accent); color: #fff;
+            text-decoration: none; font-size: 0.95rem; font-weight: 600;
+            border-radius: 8px; transition: all 0.25s; border: none;
+        }
+        .projects-cta:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(124,58,237,0.3); }
+
+        /* Hide filtered cards */
+        .project-card.hidden { display: none; }
         .project-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
         .project-card.featured .project-icon { font-size: 2.5rem; }
-
         .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent-light); text-decoration: none; font-size: 0.9rem; font-weight: 500; margin-bottom: 1rem; transition: color 0.2s; }
         .back-link:hover { color: var(--text-primary); }
-
         @media (max-width: 768px) {
             .projects-hero { padding: 5rem 0 2rem; }
             .projects-hero h1 { font-size: 1.8rem; }
@@ -76,7 +89,7 @@
                 <a href="index.html#education">Education</a>
                 <a href="projects.html">Projects</a>
                 <a href="index.html#contact">Contact</a>
-                <a href="resumes/Matthew_Hardy_Resume.pdf" class="nav-cta nav-cta-mobile" download>Download Resume</a>
+                <a href="resumes/Matthew_Hardy_Resume.pdf" class="nav-cta" download>&#11015; Resume</a>
             </div>
             <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
         </div>
@@ -85,14 +98,19 @@
     <div class="container">
         <div class="projects-hero">
             <a href="index.html" class="back-link">&larr; Back to Home</a>
-            <h1>Projects</h1>
+            <h1>Projects <span class="project-count">10</span></h1>
             <p>Internal tools and automation platforms built to solve real operational challenges at scale.</p>
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All</button>
+                <button class="filter-tab" data-filter="python">Python Tools</button>
+                <button class="filter-tab" data-filter="sql">SQL Analytics</button>
+                <button class="filter-tab" data-filter="web">Web / Flask</button>
+            </div>
         </div>
 
         <div class="project-grid">
 
-            <!-- Goldilocks - Featured -->
-            <div class="project-card featured">
+            <div class="project-card featured" data-category="python">
                 <div>
                     <div class="project-icon">&#128293;</div>
                     <h3>Goldilocks &mdash; Capacity Management Platform</h3>
@@ -115,12 +133,11 @@
                 </div>
             </div>
 
-            <!-- Andon Monitor -->
-            <div class="project-card">
+            <div class="project-card" data-category="python">
                 <div class="project-icon">&#128680;</div>
                 <h3>Andon Monitor</h3>
                 <div class="project-subtitle">Alert Tracking &bull; Analytics Dashboard</div>
-                <p>Real-time warehouse andon monitoring dashboard that tracks alert counts by type, dwell time analysis (0-12h, 12-24h, 24-48h, 48h+), and weekly top puller rankings. Integrates with Lighthouse for cycle count data and UCO tool for automated CSV exports with pivot table generation.</p>
+                <p>Real-time warehouse andon monitoring dashboard that tracks alert counts by type, dwell time analysis (0-12h, 12-24h, 24-48h, 48h+), and weekly top puller rankings.</p>
                 <ul class="project-features">
                     <li>Multi-page pagination scraping for complete data extraction</li>
                     <li>Automated login with security key authentication flow</li>
@@ -133,12 +150,11 @@
                 </div>
             </div>
 
-            <!-- Pick Path Generator -->
-            <div class="project-card">
+            <div class="project-card" data-category="python">
                 <div class="project-icon">&#128739;</div>
                 <h3>Pick Path Generator</h3>
                 <div class="project-subtitle">Aisle Sorting &bull; Path Optimization</div>
-                <p>Automated pick path generation tool that sorts bin IDs by aisle, shelf, and slot with configurable snake or zig-zag patterns. Supports even/odd slot filtering, dual-aisle interleaving, and 6 shelf sort modes. Outputs BinConf-ready CSVs for direct upload.</p>
+                <p>Automated pick path generation tool that sorts bin IDs by aisle, shelf, and slot with configurable snake or zig-zag patterns. Outputs BinConf-ready CSVs for direct upload.</p>
                 <ul class="project-features">
                     <li>Snake pattern: alternates shelf direction per slot (A-Z, Z-A, A-Z...)</li>
                     <li>Zig-zag pattern: repeats same direction for all slots</li>
@@ -151,12 +167,11 @@
                 </div>
             </div>
 
-            <!-- Delete + Sideline -->
-            <div class="project-card">
+            <div class="project-card" data-category="python">
                 <div class="project-icon">&#128465;</div>
                 <h3>Bulk Delete &amp; Sideline Tool</h3>
                 <div class="project-subtitle">Inventory Management &bull; Browser Automation</div>
-                <p>Dual-tab automation tool for mass item deletion and sidelining via AFT and Poirot. Handles the full workflow: scan container, select item, choose deletion reason, confirm, and log results. Supports single items or bulk CSV uploads with progress tracking and Excel log exports.</p>
+                <p>Dual-tab automation tool for mass item deletion and sidelining via AFT and Poirot. Handles the full workflow with progress tracking and Excel log exports.</p>
                 <ul class="project-features">
                     <li>Automated AFT Delete Items workflow with 5 deletion reason types</li>
                     <li>Poirot-based sidelining with confirm/change container flow</li>
@@ -169,12 +184,11 @@
                 </div>
             </div>
 
-            <!-- IB Monitor -->
-            <div class="project-card">
+            <div class="project-card" data-category="web">
                 <div class="project-icon">&#128666;</div>
                 <h3>Inbound Flow Monitor</h3>
                 <div class="project-subtitle">Real-Time Tracking &bull; Web Dashboard</div>
-                <p>Web-based inbound flow monitoring system integrated with FMC (Fulfillment Management Console). Tracks VRIDs, pallets, units, and door assignments in real time with auto-refresh. Features a multi-page dashboard with live tracking, analytics, and multi-user credential support.</p>
+                <p>Web-based inbound flow monitoring system integrated with FMC. Tracks VRIDs, pallets, units, and door assignments in real time with auto-refresh.</p>
                 <ul class="project-features">
                     <li>Live VRID monitoring with pallet and unit counts</li>
                     <li>Door assignment tracking per VRID</li>
@@ -186,12 +200,11 @@
                 </div>
             </div>
 
-            <!-- WAVE DPT -->
-            <div class="project-card">
+            <div class="project-card" data-category="python">
                 <div class="project-icon">&#128200;</div>
                 <h3>WAVE DPT &mdash; Damaged Inventory Tracker</h3>
                 <div class="project-subtitle">Quality Monitoring &bull; Automated Reporting</div>
-                <p>Automated scraper and reporting tool for FC Quality damaged inventory data. Pulls defect data via Selenium, processes it through Excel macros, and generates actionable reports for inventory governance and deletion cost tracking across the network.</p>
+                <p>Automated scraper and reporting tool for FC Quality damaged inventory data. Generates actionable reports for inventory governance and deletion cost tracking.</p>
                 <ul class="project-features">
                     <li>Automated FC Quality data scraping</li>
                     <li>Excel-based damaged inventory adjustment tracking</li>
@@ -202,19 +215,18 @@
                 </div>
             </div>
 
-            <!-- SQL Projects Section -->
-            <div class="project-card featured" style="margin-top:2.5rem;">
+            <div class="project-card featured sql-header" data-category="sql" style="margin-top:2.5rem;">
                 <div style="grid-column:span 2;">
                     <h2 style="font-size:1.4rem; color:var(--accent-light); margin-bottom:0.3rem;">&#128450; SQL Analytics</h2>
                     <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:1.5rem;">Production queries powering operational dashboards and safety reporting across the fulfillment network.</p>
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-category="sql">
                 <div class="project-icon">&#128337;</div>
                 <h3>Inventory Dwell Time Analysis</h3>
                 <div class="project-subtitle">Facility Audit &bull; Inventory Intelligence</div>
-                <p>Multi-join analytical query that calculates container dwell times across an entire fulfillment center by correlating physical container positions with stow/pick activity, bin item data, ASIN attributes, shelf life, and pricing. Parses bin IDs to extract mod, aisle, level, and slot for spatial analysis. Uses temp tables, window functions (ROW_NUMBER), timezone conversion, and COALESCE chains to handle both direct and pallet-nested inventory.</p>
+                <p>Multi-join analytical query calculating container dwell times across an entire fulfillment center. Uses temp tables, window functions, timezone conversion, and COALESCE chains.</p>
                 <ul class="project-features">
                     <li>12+ table joins across containers, bin items, stow metrics, pick actions, and ASIN catalogs</li>
                     <li>Window functions to isolate most recent stow/pick per bin</li>
@@ -226,11 +238,11 @@
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-category="sql">
                 <div class="project-icon">&#9888;</div>
                 <h3>Overweight Package Safety Report</h3>
                 <div class="project-subtitle">Safety &bull; Automated Alerting</div>
-                <p>CTE-based query that identifies packages exceeding 50 lbs across the facility by joining container physical data with FCSKU mappings, FNSKU-ASIN resolution, and physical item weight attributes. Feeds an automated daily email alert system that routes flagged items to safety teams for team-lift or alternative handling procedures.</p>
+                <p>CTE-based query identifying packages exceeding 50 lbs. Feeds an automated daily email alert system that routes flagged items to safety teams.</p>
                 <ul class="project-features">
                     <li>Multi-step CTE pipeline: heavy items &rarr; container mapping &rarr; weight enrichment</li>
                     <li>FCSKU &rarr; FNSKU &rarr; ASIN resolution chain across 3 catalog tables</li>
@@ -241,11 +253,11 @@
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-category="sql">
                 <div class="project-icon">&#128203;</div>
                 <h3>Standard Work Compliance Monitor</h3>
                 <div class="project-subtitle">Regional Monitoring &bull; Accountability</div>
-                <p>Operational compliance query tracking dirty cage container movements across the network. Calculates dwell times in both days and hours from move date to current, capturing associate IDs, scannable IDs, and container types. Distributed via automated daily email to regional leadership for real-time visibility into standard work completion.</p>
+                <p>Operational compliance query tracking dirty cage container movements across the network. Distributed via automated daily email to regional leadership.</p>
                 <ul class="project-features">
                     <li>Dwell time calculation in days and hours for SLA tracking</li>
                     <li>Associate-level accountability with move-by tracking</li>
@@ -256,45 +268,90 @@
                 </div>
             </div>
 
-            <div style="grid-column:1/-1;text-align:center;padding:2rem 0 1rem;">
-                <a href="https://matthewhardy-dev.github.io/interactive-resume/" target="_blank" style="display:inline-flex;align-items:center;gap:0.6rem;color:var(--accent-light);text-decoration:none;font-size:0.9rem;font-weight:600;padding:0.8rem 1.8rem;border:1px solid var(--border);border-radius:8px;background:var(--bg-card);transition:all 0.3s;" onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 4px 20px var(--accent-glow)'" onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='none'">&#128187; View Interactive Resume &rarr;</a>
+            <div style="grid-column:1/-1;text-align:center;padding:2.5rem 0 1rem;display:none;">
+                <a href="https://matthewhardy-dev.github.io/interactive-resume/" target="_blank" class="projects-cta">&#128187; View Interactive Resume &rarr;</a>
             </div>
 
         </div>
     </div>
 
     <footer>
+        <div class="footer-status">
+            <span class="status-dot"></span>
+            Open to new opportunities
+        </div>
         <p>&copy; 2025 Matthew Hardy. All rights reserved.</p>
     </footer>
 
     <script>
-        // Navbar
         document.getElementById('navbar').classList.add('scrolled');
-        // Mobile toggle
         const toggle = document.querySelector('.nav-toggle');
         const navLinks = document.querySelector('.nav-links');
         toggle.addEventListener('click', () => navLinks.classList.toggle('active'));
-        // Fade in cards
+
+        // Staggered card fade-in
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
         }, { threshold: 0.1 });
-        document.querySelectorAll('.project-card').forEach(el => { el.classList.add('fade-in'); observer.observe(el); });
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach((el, i) => {
+            el.classList.add('fade-in');
+            el.style.transitionDelay = `${i * 80}ms`;
+            observer.observe(el);
+        });
+
+        // Filter tabs
+        const tabs = document.querySelectorAll('.filter-tab');
+        const sqlHeader = document.querySelector('.sql-header');
+        const ctaRow = document.querySelector('.projects-cta').parentElement;
+        const countBadge = document.querySelector('.project-count');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                const filter = tab.dataset.filter;
+                let visibleCount = 0;
+
+                cards.forEach(card => {
+                    const cat = card.dataset.category;
+                    if (!cat) return; // skip non-categorized
+                    if (filter === 'all' || cat === filter) {
+                        card.classList.remove('hidden');
+                        card.style.display = '';
+                        visibleCount++;
+                    } else {
+                        card.classList.add('hidden');
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show/hide SQL header based on filter
+                if (sqlHeader) {
+                    if (filter === 'all' || filter === 'sql') {
+                        sqlHeader.classList.remove('hidden');
+                        sqlHeader.style.display = '';
+                    } else {
+                        sqlHeader.classList.add('hidden');
+                        sqlHeader.style.display = 'none';
+                    }
+                }
+
+                // Always show CTA row
+                if (ctaRow) ctaRow.style.display = '';
+
+                countBadge.textContent = filter === 'all' ? '10' : visibleCount;
+            });
+        });
 
         // Particle background
         const canvas = document.getElementById('particles');
         const ctx = canvas.getContext('2d');
         let particles = [];
         function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resize);
-        resize();
+        window.addEventListener('resize', resize); resize();
         for (let i = 0; i < 80; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.3,
-                vy: (Math.random() - 0.5) * 0.3,
-                r: Math.random() * 2.5 + 1
-            });
+            particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3, r: Math.random() * 2.5 + 1 });
         }
         function drawParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -302,20 +359,10 @@
                 p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(167,139,250,0.8)';
-                ctx.fill();
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = 'rgba(167,139,250,0.8)'; ctx.fill();
                 for (let j = i + 1; j < particles.length; j++) {
-                    const dx = p.x - particles[j].x, dy = p.y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 150) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(167,139,250,${0.4 * (1 - dist / 150)})`;
-                        ctx.stroke();
-                    }
+                    const dx = p.x - particles[j].x, dy = p.y - particles[j].y, dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y); ctx.strokeStyle = `rgba(167,139,250,${0.4 * (1 - dist / 150)})`; ctx.stroke(); }
                 }
             });
             requestAnimationFrame(drawParticles);

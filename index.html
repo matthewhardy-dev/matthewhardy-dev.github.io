@@ -22,7 +22,7 @@
                 <a href="#education">Education</a>
                 <a href="projects.html">Projects</a>
                 <a href="#contact">Contact</a>
-                <a href="resumes/Matthew_Hardy_Resume.pdf" class="nav-cta nav-cta-mobile" download>Download Resume</a>
+                <a href="resumes/Matthew_Hardy_Resume.pdf" class="nav-cta" download>&#11015; Resume</a>
             </div>
             <button class="nav-toggle" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
@@ -43,6 +43,9 @@
                 <span class="tagline-divider">|</span>
                 <span class="tagline-item">AWS Cloud & Security</span>
             </div>
+            <div class="hero-typing">
+                <span id="typed-text"></span><span class="cursor"></span>
+            </div>
             <p class="hero-location">Greater Harrisburg Area</p>
             <div class="hero-actions">
                 <a href="#experience" class="btn btn-primary">View My Work</a>
@@ -53,6 +56,26 @@
             <div class="scroll-arrow"></div>
         </div>
     </section>
+
+    <!-- Highlight Bar -->
+    <div class="highlight-bar">
+        <div class="highlight-item">
+            <div class="highlight-number">83%</div>
+            <span class="highlight-label">Efficiency Gain</span>
+        </div>
+        <div class="highlight-item">
+            <div class="highlight-number">15+ yrs</div>
+            <span class="highlight-label">In Technology</span>
+        </div>
+        <div class="highlight-item">
+            <div class="highlight-number">1M+ sqft</div>
+            <span class="highlight-label">Facility Audited</span>
+        </div>
+        <div class="highlight-item">
+            <div class="highlight-number">3+ yrs</div>
+            <span class="highlight-label">At Amazon</span>
+        </div>
+    </div>
 
     <!-- About -->
     <section id="about">
@@ -99,7 +122,7 @@
                             <h4>Data Analyst</h4>
                             <span class="job-date">August 2024 &ndash; Present</span>
                         </div>
-                        <ul class="job-bullets">
+                        <ul class="job-bullets collapsible">
                             <li>Spearheaded an end-to-end facility launch &mdash; from legacy decommission to full operational standup &mdash; owning capacity planning, zone configuration, and process validation with zero critical disruptions.</li>
                             <li>Led a full-scale infrastructure audit of a 1M+ sq ft facility, resolving over a decade of capacity misalignment &mdash; restructuring layouts, correcting system-to-physical discrepancies, and optimizing pathing to protect SLAs and associate safety.</li>
                             <li>Built a real-time capacity management platform with automated controls across drop zones and pick areas, eliminating overflow incidents and transforming reactive safety responses into preventive operations.</li>
@@ -110,6 +133,7 @@
                             <li>Delivered automation tools that eliminated manual pick path planning and bulk inventory processing, reclaiming associate hours and accelerating fulfillment throughput.</li>
                             <li>Partnered with AWS security and engineering teams to resolve critical (Sev2) vulnerabilities with rapid turnaround, maintaining system integrity under tight SLAs.</li>
                         </ul>
+                        <button class="show-more-btn" onclick="toggleBullets(this)">Show more ▾</button>
                     </div>
                 </div>
 
@@ -295,6 +319,10 @@
 
     <!-- Footer -->
     <footer>
+        <div class="footer-status">
+            <span class="status-dot"></span>
+            Open to new opportunities
+        </div>
         <p>&copy; 2025 Matthew Hardy. All rights reserved.</p>
     </footer>
 
