@@ -474,6 +474,13 @@ footer {
 /* ============================================
    RESPONSIVE
    ============================================ */
+/* Tablet: cramped nav with 6 links */
+@media (max-width: 1024px) {
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.82rem; }
+    .nav-cta { font-size: 0.78rem; padding: 0.4rem 0.9rem; }
+}
+
 @media (max-width: 768px) {
     .nav-links, .nav-cta { display: none; }
     .nav-toggle { display: block; }
@@ -486,17 +493,43 @@ footer {
         left: 0;
         right: 0;
         background: rgba(10, 15, 26, 0.98);
-        padding: 1.5rem 2rem;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid var(--border);
+        gap: 0;
+    }
+
+    .nav-links.active a {
+        padding: 0.75rem 0;
+        font-size: 1rem;
         border-bottom: 1px solid var(--border);
     }
+
+    .nav-links.active a:last-child { border-bottom: none; }
+
+    .nav-links.active .mobile-resume {
+        display: block;
+        padding: 0.75rem 1.2rem;
+        margin-top: 0.75rem;
+        background: var(--accent);
+        color: #fff;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        border-bottom: none;
+    }
+
+    .nav-links.active .mobile-resume:hover { background: var(--accent-light); }
+
+    .mobile-resume { display: none; }
 
     .hero-tagline { flex-direction: column; gap: 0.3rem; }
     .tagline-divider { display: none; }
     .hero-actions { flex-direction: column; align-items: center; }
 
     .about-grid { grid-template-columns: 1fr; }
-    .about-stats { flex-direction: row; }
-    .stat-card { flex: 1; }
+    .about-stats { flex-direction: column; }
 
     .skills-grid { grid-template-columns: 1fr; }
     .edu-grid { grid-template-columns: 1fr; }
@@ -504,4 +537,9 @@ footer {
 
     .job-role { flex-direction: column; gap: 0.2rem; }
     .job-header { flex-direction: column; gap: 0.2rem; }
+
+    section { padding: 3rem 0; }
+    .container { padding: 0 1.2rem; }
+    .section-title { font-size: 1.6rem; margin-bottom: 2rem; }
+    .timeline-content { padding: 1.2rem 1.2rem; }
 }
