@@ -302,14 +302,14 @@
     </footer>
     <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
     <script>
-    document.fonts.ready.then(() => {
+    const faviconFont = new FontFace('Saira', "url(https://fonts.gstatic.com/s/saira/v20/memWYa2wxmKQyPMrZX79wwYZQMhsyuShhKMjjbU9uXuA71rDosg7lwYmUVY.woff2)", { weight: '700' });
+    faviconFont.load().then(font => {
+        document.fonts.add(font);
         const c = document.createElement('canvas');
         c.width = 64; c.height = 64;
         const x = c.getContext('2d');
-        const g = x.createLinearGradient(0, 0, 64, 64);
-        g.addColorStop(0, '#0a0f1a'); g.addColorStop(1, '#0a0f1a');
-        x.beginPath(); x.roundRect(0, 0, 64, 64, 12); x.fillStyle = g; x.fill();
-        x.font = "bold 42px 'Saira', sans-serif";
+        x.beginPath(); x.roundRect(0, 0, 64, 64, 12); x.fillStyle = '#0a0f1a'; x.fill();
+        x.font = "bold 42px 'Saira'";
         x.fillStyle = '#7c3aed';
         x.textAlign = 'center';
         x.textBaseline = 'middle';
