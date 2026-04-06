@@ -474,7 +474,7 @@ footer {
 /* ============================================
    RESPONSIVE
    ============================================ */
-.mobile-resume { display: none; }
+.nav-cta-mobile { display: none; }
 
 /* Tablet: cramped nav with 6 links */
 @media (max-width: 1024px) {
@@ -500,6 +500,16 @@ footer {
         gap: 0;
     }
 
+    .nav-links.active .nav-cta-mobile {
+        display: block !important;
+        margin-top: 0.75rem;
+        padding: 0.75rem 1.2rem;
+        text-align: center;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        border-bottom: none;
+    }
+
     .nav-links.active a {
         padding: 0.75rem 0;
         font-size: 1rem;
@@ -508,23 +518,6 @@ footer {
 
     .nav-links.active a:last-child { border-bottom: none; }
 
-    .nav-links.active .mobile-resume {
-        display: block;
-        padding: 0.75rem 1.2rem;
-        margin-top: 0.75rem;
-        background: var(--accent);
-        color: #fff;
-        border-radius: 6px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        text-align: center;
-        text-decoration: none;
-        border-bottom: none;
-    }
-
-    .nav-links.active .mobile-resume:hover { background: var(--accent-light); }
-
-    .mobile-resume { display: none !important; }
 
     .hero-tagline { flex-direction: column; gap: 0.3rem; }
     .tagline-divider { display: none; }
