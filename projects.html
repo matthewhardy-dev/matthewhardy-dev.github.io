@@ -307,10 +307,10 @@
         c.width = 64; c.height = 64;
         const x = c.getContext('2d');
         const g = x.createLinearGradient(0, 0, 64, 64);
-        g.addColorStop(0, '#7c3aed'); g.addColorStop(1, '#4c1d95');
+        g.addColorStop(0, '#0a0f1a'); g.addColorStop(1, '#0a0f1a');
         x.beginPath(); x.roundRect(0, 0, 64, 64, 12); x.fillStyle = g; x.fill();
         x.font = "42px 'Mr Dafoe', cursive";
-        x.fillStyle = '#e8edf5';
+        x.fillStyle = '#7c3aed';
         x.textAlign = 'center';
         x.textBaseline = 'middle';
         x.fillText('M', 32, 36);
