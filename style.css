@@ -693,6 +693,7 @@ footer {
     .highlight-label { font-size: 0.65rem; }
 
     .about-grid { grid-template-columns: 1fr; }
+    .about-photo { text-align: center; }
     .about-stats { flex-direction: column; }
 
     .skills-grid { grid-template-columns: 1fr; }
