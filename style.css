@@ -707,3 +707,63 @@ footer {
     .section-title { font-size: 1.6rem; margin-bottom: 2rem; }
     .timeline-content { padding: 1.2rem 1.2rem; }
 }
+
+/* ============================================
+   KEYBOARD FOCUS STYLES
+   ============================================ */
+*:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+.nav-links a:focus-visible::after {
+    width: 100%;
+}
+
+.contact-card:focus-visible,
+.edu-card:focus-visible,
+.skill-category:focus-visible,
+.stat-card:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 2px;
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    #particles { display: none; }
+
+    .fade-in {
+        opacity: 1;
+        transform: none;
+    }
+
+    .hero-greeting,
+    .hero-name,
+    .hero-tagline,
+    .hero-typing,
+    .hero-location,
+    .hero-actions,
+    .scroll-indicator,
+    .highlight-bar {
+        opacity: 1;
+        animation: none;
+        transform: none;
+    }
+}
