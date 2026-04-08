@@ -121,7 +121,7 @@
     <div class="container">
         <div class="projects-hero">
             <a href="index.html" class="back-link">&larr; Back to Home</a>
-            <h1>Projects <span class="project-count">10</span></h1>
+            <h1>Projects <span class="project-count">11</span></h1>
             <p>Internal tools and automation platforms built to solve real operational challenges at scale.</p>
             <div class="filter-tabs">
                 <button class="filter-tab active" data-filter="all">All</button>
@@ -133,26 +133,44 @@
 
         <div class="project-grid">
 
-            <div class="project-card featured" data-category="python">
+            <div class="project-card featured" data-category="web">
                 <div>
-                    <div class="project-icon">&#128293;</div>
-                    <h3>Goldilocks &mdash; Capacity Management Platform</h3>
-                    <div class="project-subtitle">Real-Time Monitoring &bull; Automated Controls</div>
-                    <p>Full-stack desktop application that monitors bin, bay, and aisle utilization across drop zones and pick areas in real time. Features a color-coded heatmap view at the aisle level, automated lock/unlock controls via CSV generation and direct API upload to BinConf, and a 15-minute auto-refresh cycle.</p>
-                    <p>First run uses Selenium to capture API parameters from the stowmap, then switches to direct HTTP calls &mdash; achieving a 13x speed improvement over browser scraping. Supports multi-warehouse deployment with cached configurations.</p>
+                    <div class="project-icon">&#128202;</div>
+                    <h3>SSD DC Scorecard &mdash; Operations Dashboard</h3>
+                    <div class="project-subtitle">AWS Cloud &bull; Data Pipeline &bull; Live Dashboard</div>
+                    <p>Full-stack operations scorecard serving 7 warehouses with real-time KPIs across leadership, ops, and engineering views. Built on a serverless AWS pipeline: Andes/Redshift SQL queries export via Datanet to S3, rendered through a Chart.js dashboard hosted on CloudFront.</p>
+                    <p>Features 11 analytical datasets covering volume/throughput, quality scorecards, shift performance, zone heatmaps, bottleneck analysis, cost-per-unit tracking, and hourly intraday monitoring &mdash; all with warehouse-level filtering.</p>
+                    <a href="https://d25l4zx8rl25fn.cloudfront.net" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1.2rem;background:var(--accent);color:#fff;text-decoration:none;font-size:0.85rem;font-weight:600;border-radius:6px;margin-top:0.5rem;transition:all 0.25s;">&#9654; Live Preview</a>
                 </div>
                 <div>
                     <ul class="project-features">
-                        <li>Real-time drop zone and pick area utilization tracking</li>
-                        <li>Aisle-level heatmap with stowmap class-N color mapping</li>
-                        <li>One-click lock/unlock with automated BinConf CSV upload</li>
-                        <li>API parameter capture and caching for direct-mode scraping</li>
-                        <li>Excel-driven zone configuration with aisle auto-detection</li>
-                        <li>Headless browser with automatic session management</li>
+                        <li>3-tab dashboard: Leadership KPIs, Ops real-time, Engineer diagnostics</li>
+                        <li>11 SQL queries against Andes (Redshift) with weekly Sun&ndash;Sat aggregation</li>
+                        <li>Automated data pipeline: Datanet &rarr; S3 &rarr; SPICE-ready CSVs</li>
+                        <li>CloudFront + S3 static hosting with Origin Access Control</li>
+                        <li>Warehouse filter across HDC3, HGA6, HLA6, HMW3, HNE1, HPA1, HTX3</li>
+                        <li>IAM least-privilege: QuickSight + Redshift read-only policies</li>
                     </ul>
                     <div class="project-tech">
-                        <span>Python</span><span>Tkinter</span><span>Selenium</span><span>REST APIs</span><span>OpenPyXL</span><span>Threading</span><span>JSON Caching</span>
+                        <span>AWS</span><span>S3</span><span>CloudFront</span><span>QuickSight</span><span>Redshift</span><span>SQL</span><span>Python</span><span>Chart.js</span><span>IAM</span><span>Datanet</span>
                     </div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="python">
+                <div class="project-icon">&#128293;</div>
+                <h3>Goldilocks &mdash; Capacity Management Platform</h3>
+                <div class="project-subtitle">Real-Time Monitoring &bull; Automated Controls</div>
+                <p>Full-stack desktop app monitoring bin, bay, and aisle utilization across drop zones and pick areas in real time. Color-coded heatmaps, automated lock/unlock via BinConf CSV upload, and 13x speed improvement over browser scraping using direct HTTP calls.</p>
+                <ul class="project-features">
+                    <li>Real-time drop zone and pick area utilization tracking</li>
+                    <li>Aisle-level heatmap with stowmap class-N color mapping</li>
+                    <li>One-click lock/unlock with automated BinConf CSV upload</li>
+                    <li>API parameter capture and caching for direct-mode scraping</li>
+                    <li>15-minute auto-refresh with multi-warehouse support</li>
+                </ul>
+                <div class="project-tech">
+                    <span>Python</span><span>Tkinter</span><span>Selenium</span><span>REST APIs</span><span>OpenPyXL</span><span>Threading</span><span>JSON Caching</span>
                 </div>
             </div>
 
@@ -383,7 +401,7 @@
                 // Always show CTA row
                 if (ctaRow) ctaRow.style.display = '';
 
-                countBadge.textContent = filter === 'all' ? '10' : visibleCount;
+                countBadge.textContent = filter === 'all' ? '11' : visibleCount;
             });
         });
 
