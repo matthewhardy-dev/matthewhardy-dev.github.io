@@ -111,6 +111,32 @@ body {
 .nav-cta:hover { background: var(--accent-light); transform: translateY(-1px); }
 .nav-cta::after { display: none !important; }
 
+/* Dual resume CTA: Resume | Detailed */
+.nav-cta-group {
+    display: inline-flex;
+    align-items: stretch;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--accent);
+}
+.nav-cta-group a {
+    padding: 0.5rem 0.95rem;
+    background: var(--accent);
+    color: #fff !important;
+    -webkit-text-fill-color: #fff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+.nav-cta-group a:first-child { border-right: 1px solid rgba(255,255,255,0.35); }
+.nav-cta-group a:hover { background: var(--accent-light); }
+.nav-cta-group a::after { display: none !important; }
+
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
 .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text-secondary); margin: 5px 0; transition: 0.3s; }
 
