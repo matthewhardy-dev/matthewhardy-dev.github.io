@@ -20,10 +20,11 @@ navLinks.querySelectorAll('a').forEach(link => {
 const typedEl = document.getElementById('typed-text');
 if (typedEl) {
     const phrases = [
-        "I turn operational chaos into automated systems.",
-        "Building data pipelines that save thousands of hours.",
-        "From raw data to executive-ready insights.",
-        "Automating what others do manually."
+        "I own the AWS account powering 7 warehouses.",
+        "25+ tools built. 12 pipelines automated. Zero downtime.",
+        "From raw data to executive-ready insights at scale.",
+        "Peers at other sites request my tools without being asked.",
+        "EventBridge → Glue → S3 → Lambda → SES. Fully serverless."
     ];
     let phraseIndex = 0;
     let charIndex = 0;
@@ -78,7 +79,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Group elements by parent so siblings stagger
 const staggerGroups = new Map();
-document.querySelectorAll('.timeline-item, .skill-category, .edu-card, .contact-card, .stat-card, .about-text, .highlight-item').forEach(el => {
+document.querySelectorAll('.timeline-item, .skill-category, .edu-card, .contact-card, .stat-card, .about-text, .highlight-item, .testimonial-card').forEach(el => {
     el.classList.add('fade-in');
     const parent = el.parentElement;
     if (!staggerGroups.has(parent)) staggerGroups.set(parent, []);

@@ -1,2 +1,6 @@
 interactive/purple-deploy/
 retro-games/
+
+# Office/editor temp lock files
+~$*
+*.backup

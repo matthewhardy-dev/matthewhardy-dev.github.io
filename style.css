@@ -416,7 +416,7 @@ section { padding: 5rem 0; background: transparent; }
 }
 
 .job-bullets li::before {
-    content: '▸';
+    content: '\2022';
     position: absolute;
     left: 0;
     color: var(--accent);
@@ -497,6 +497,57 @@ section { padding: 5rem 0; background: transparent; }
 }
 
 /* ============================================
+   TESTIMONIALS
+   ============================================ */
+#testimonials { background: rgba(17, 24, 39, 0.85); }
+
+.testimonial-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+.testimonial-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.8rem;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.testimonial-card::before {
+    content: '\201C';
+    position: absolute;
+    top: 0.8rem;
+    left: 1.2rem;
+    font-size: 3rem;
+    color: var(--accent);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.testimonial-card:hover { border-color: var(--accent); box-shadow: 0 4px 20px var(--accent-glow); transform: translateY(-2px); }
+
+.testimonial-text {
+    color: var(--text-secondary);
+    font-size: 0.93rem;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 1rem;
+    padding-top: 0.5rem;
+}
+
+.testimonial-author {
+    font-size: 0.8rem;
+    color: var(--accent-light);
+    font-weight: 600;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .testimonial-grid { grid-template-columns: 1fr; }
+    .testimonial-card { padding: 1.2rem; }
+}
+
+/* ============================================
    EDUCATION
    ============================================ */
 .edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
@@ -549,7 +600,7 @@ section { padding: 5rem 0; background: transparent; }
 .contact-card:hover { border-color: var(--accent); box-shadow: 0 4px 20px var(--accent-glow); transform: translateY(-3px); }
 
 .contact-icon { font-size: 1.5rem; color: var(--accent-light); font-weight: 700; }
-.contact-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+.contact-label { font-size: 0.8rem; color: var(--accent-light); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 .contact-value { font-size: 0.85rem; color: var(--text-secondary); word-break: break-all; }
 
 /* ============================================
