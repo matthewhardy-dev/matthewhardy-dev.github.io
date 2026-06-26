@@ -112,7 +112,7 @@
                 <div class="project-icon"><i data-lucide="layout-dashboard" style="width:28px;height:28px;color:var(--accent-light)"></i></div>
                 <h3>SSD DC Scorecard</h3>
                 <div class="project-subtitle">AWS Cloud &bull; Data Pipeline &bull; Live Dashboard</div>
-                <p>Full-stack operations scorecard serving 7 distribution centers with real-time KPIs. Serverless AWS pipeline: Andes/Redshift &rarr; Datanet &rarr; S3 &rarr; Chart.js on CloudFront.</p>
+                <p>Full-stack operations scorecard serving 7 distribution centers with real-time KPIs. Serverless AWS pipeline: Redshift &rarr; scheduled ETL &rarr; S3 &rarr; Chart.js on CloudFront.</p>
                 <ul class="project-features">
                     <li>3-tab dashboard: Leadership KPIs, Ops real-time, Engineer diagnostics</li>
                     <li>11 SQL queries with weekly Sun&ndash;Sat aggregation</li>
@@ -134,8 +134,8 @@
                 <div class="project-subtitle">Real-Time Monitoring &bull; Automated Controls</div>
                 <p>Desktop app monitoring bin/bay/aisle utilization across drop zones and pick areas in real time. 13x speed improvement over browser scraping using direct HTTP calls.</p>
                 <ul class="project-features">
-                    <li>Color-coded heatmaps with stowmap class-N mapping</li>
-                    <li>One-click lock/unlock with BinConf CSV upload</li>
+                    <li>Color-coded heatmaps with facility-map class-N mapping</li>
+                    <li>One-click lock/unlock with bulk CSV upload</li>
                     <li>API parameter capture and caching for direct-mode</li>
                     <li>15-minute auto-refresh with multi-warehouse support</li>
                 </ul>
@@ -173,7 +173,7 @@
                     <li>Snake and zig-zag patterns with dual-aisle interleaving</li>
                     <li>Auto-Guess with confidence scoring per aisle</li>
                     <li>Plotly visualizations for large facility datasets</li>
-                    <li>FC StowMap compatibility — saves ~2hrs vs manual BinConf</li>
+                    <li>Facility-map compatibility — saves ~2hrs vs manual configuration</li>
                 </ul>
                 <div class="project-tech">
                     <span>Python</span><span>Plotly</span><span>Tkinter</span><span>CustomTkinter</span><span>PyInstaller</span>
@@ -186,10 +186,10 @@
                 <div class="project-icon"><i data-lucide="trash-2" style="width:28px;height:28px;color:var(--accent-light)"></i></div>
                 <h3>Bulk Delete &amp; Sideline Tool</h3>
                 <div class="project-subtitle">Inventory Management &bull; Browser Automation</div>
-                <p>Dual-tab automation for mass item deletion and sidelining via AFT and Poirot with progress tracking and Excel log exports.</p>
+                <p>Dual-tab automation for mass item deletion and sidelining via internal inventory tools with progress tracking and Excel log exports.</p>
                 <ul class="project-features">
-                    <li>Automated AFT Delete with 5 deletion reason types</li>
-                    <li>Poirot-based sidelining with confirm/change flow</li>
+                    <li>Automated bulk deletion with 5 deletion reason types</li>
+                    <li>Tool-based sidelining with confirm/change flow</li>
                     <li>Session reuse across runs (no re-login required)</li>
                     <li>Structured Excel logs with ASIN, disposition, and cost</li>
                 </ul>
@@ -204,9 +204,9 @@
                 <div class="project-icon"><i data-lucide="file-warning" style="width:28px;height:28px;color:var(--accent-light)"></i></div>
                 <h3>WAVE DPT &mdash; Damaged Inventory Report</h3>
                 <div class="project-subtitle">Quality Monitoring &bull; Automated Reporting</div>
-                <p>Automated scraper and reporting tool for FC Quality damaged inventory data. Generates actionable reports for governance and deletion cost tracking.</p>
+                <p>Automated scraper and reporting tool for quality-system damaged inventory data. Generates actionable reports for governance and deletion cost tracking.</p>
                 <ul class="project-features">
-                    <li>Automated FC Quality data scraping</li>
+                    <li>Automated quality-system data scraping</li>
                     <li>Excel-based damaged inventory adjustment tracking</li>
                     <li>Configurable warehouse and report parameters</li>
                 </ul>
@@ -221,15 +221,15 @@
                 <div class="project-icon"><i data-lucide="truck" style="width:28px;height:28px;color:var(--accent-light)"></i></div>
                 <h3>Inbound Flow Monitor</h3>
                 <div class="project-subtitle">Real-Time Tracking &bull; Web Dashboard</div>
-                <p>Web-based inbound flow monitoring integrated with FMC. Tracks VRIDs, pallets, units, and door assignments in real time.</p>
+                <p>Web-based inbound flow monitoring integrated with an internal logistics API. Tracks inbound shipments, pallets, units, and door assignments in real time.</p>
                 <ul class="project-features">
-                    <li>Live VRID monitoring with pallet and unit counts</li>
-                    <li>Door assignment tracking per VRID</li>
+                    <li>Live shipment monitoring with pallet and unit counts</li>
+                    <li>Door assignment tracking per shipment</li>
                     <li>Performance metrics and KPI dashboards</li>
                     <li>Multi-user profiles with per-user credentials</li>
                 </ul>
                 <div class="project-tech">
-                    <span>Python</span><span>Flask</span><span>HTML/CSS/JS</span><span>Selenium</span><span>FMC API</span>
+                    <span>Python</span><span>Flask</span><span>HTML/CSS/JS</span><span>Selenium</span><span>REST APIs</span>
                 </div>
             </div>
 
@@ -281,7 +281,7 @@
                 <p>CTE-based query identifying packages exceeding 50 lbs. Feeds automated daily email alerts that route flagged items to safety teams.</p>
                 <ul class="project-features">
                     <li>Multi-step CTE pipeline: items &rarr; containers &rarr; weight</li>
-                    <li>FCSKU &rarr; FNSKU &rarr; ASIN resolution across 3 tables</li>
+                    <li>SKU resolution across 3 inventory tables</li>
                     <li>Directly reduced workplace injuries through rerouting</li>
                 </ul>
                 <div class="project-tech">
@@ -295,15 +295,15 @@
                 <div class="project-icon"><i data-lucide="zap" style="width:28px;height:28px;color:var(--accent-light)"></i></div>
                 <h3>Stow Defect Injection</h3>
                 <div class="project-subtitle">Defect Attribution &bull; Accountability</div>
-                <p>Reconstructs the full movement chain for items that end up in dirty-cage drop zones &mdash; tracing each case from initial VE placement through the first stow to the DZ scan &mdash; to attribute the responsible stower behind every injected defect.</p>
+                <p>Reconstructs the full movement chain for items that end up in quarantine drop zones &mdash; tracing each case from initial placement through the first stow to the drop-zone scan &mdash; to attribute the responsible associate behind every injected defect.</p>
                 <ul class="project-features">
-                    <li>Multi-stage CTE pipeline tracing VE placement &rarr; first stow &rarr; DZ scan</li>
-                    <li>Window-ranked event sequencing to isolate the first stower per case</li>
+                    <li>Multi-stage CTE pipeline tracing placement &rarr; first stow &rarr; drop-zone scan</li>
+                    <li>Window-ranked event sequencing to isolate the responsible associate per case</li>
                     <li>Captures origin container, VE ID, login, app, and timestamps</li>
-                    <li>Daily midnight snapshot appended to Cradle, 180-day lookback</li>
+                    <li>Daily midnight snapshot appended to the data lake, 180-day lookback</li>
                 </ul>
                 <div class="project-tech">
-                    <span>SQL</span><span>SparkSQL</span><span>CTEs</span><span>Window Functions</span><span>Cradle ETL</span>
+                    <span>SQL</span><span>SparkSQL</span><span>CTEs</span><span>Window Functions</span><span>Scheduled ETL</span>
                 </div>
                 <button class="screenshot-btn" onclick="openLightbox(['screenshots/sdi.png','screenshots/sdi1.png','screenshots/sdi1_1.png','screenshots/sdi2_1.png','screenshots/sdi2_2.png','screenshots/sdi3.png'])">View Screenshots</button>
             </div>
@@ -313,9 +313,9 @@
                 <div class="project-icon"><i data-lucide="git-merge" style="width:28px;height:28px;color:var(--accent-light)"></i></div>
                 <h3>Stow Overlap</h3>
                 <div class="project-subtitle">Root-Cause Analysis &bull; Cross-Query Join</div>
-                <p>Cross-references First Stower logins from the Stow Defect Injection query against logins flagged on the MG Stow scorecard, returning only the associates that appear on both &mdash; pinpointing which login caused a given stow error for precise, defensible accountability.</p>
+                <p>Cross-references responsible-associate logins from the Stow Defect Injection query against logins flagged on the rapid-scan stow report, returning only the associates that appear on both &mdash; pinpointing which login caused a given stow error for precise, defensible accountability.</p>
                 <ul class="project-features">
-                    <li>Joins MG Stow scorecard logins with Stow Defect first-stower logins</li>
+                    <li>Joins rapid-scan stow-report logins with Stow Defect responsible-associate logins</li>
                     <li>Inner join isolates the intersection &mdash; the responsible associate</li>
                     <li>Reuses identical defect-injection logic for exact-match fidelity</li>
                     <li>Daily midnight snapshot for same-day accountability</li>
@@ -366,7 +366,7 @@
                 <p>Suite of 8+ inventory queries providing full lifecycle visibility &mdash; from item lookups to deep-dive container analysis with weight and disposition tracking.</p>
                 <ul class="project-features">
                     <li>8 query variants: Simple, Fast, InDepth, V2, Bin_Info</li>
-                    <li>CSX quantity tracking and IDRT breakdown analysis</li>
+                    <li>Container quantity tracking and disposition breakdown analysis</li>
                     <li>Who_Flipped_Pending: accountability for disposition changes</li>
                 </ul>
                 <div class="project-tech">
