@@ -197,23 +197,6 @@
                 <button class="screenshot-btn" onclick="openLightbox(['screenshots/autodeletesideline.png','screenshots/autodeletesideline1.png'])">View Screenshots</button>
             </div>
 
-            <!-- Inbound Flow Monitor -->
-            <div class="project-card" data-category="web">
-                <div class="project-icon"><i data-lucide="truck" style="width:28px;height:28px;color:var(--accent-light)"></i></div>
-                <h3>Inbound Flow Monitor</h3>
-                <div class="project-subtitle">Real-Time Tracking &bull; Web Dashboard</div>
-                <p>Web-based inbound flow monitoring integrated with FMC. Tracks VRIDs, pallets, units, and door assignments in real time.</p>
-                <ul class="project-features">
-                    <li>Live VRID monitoring with pallet and unit counts</li>
-                    <li>Door assignment tracking per VRID</li>
-                    <li>Performance metrics and KPI dashboards</li>
-                    <li>Multi-user profiles with per-user credentials</li>
-                </ul>
-                <div class="project-tech">
-                    <span>Python</span><span>Flask</span><span>HTML/CSS/JS</span><span>Selenium</span><span>FMC API</span>
-                </div>
-            </div>
-
             <!-- WAVE DPT -->
             <div class="project-card" data-category="python">
                 <div class="project-icon"><i data-lucide="file-warning" style="width:28px;height:28px;color:var(--accent-light)"></i></div>
@@ -229,6 +212,23 @@
                     <span>Python</span><span>Selenium</span><span>Excel/VBA</span><span>JSON Config</span>
                 </div>
                 <button class="screenshot-btn" onclick="openLightbox(['screenshots/FCQuality SSD.png','screenshots/FCQuality SSD1.png','screenshots/FCQuality SSD2.png','screenshots/FCQuality SSD3.png'])">View Screenshots</button>
+            </div>
+
+            <!-- Inbound Flow Monitor -->
+            <div class="project-card" data-category="web">
+                <div class="project-icon"><i data-lucide="truck" style="width:28px;height:28px;color:var(--accent-light)"></i></div>
+                <h3>Inbound Flow Monitor</h3>
+                <div class="project-subtitle">Real-Time Tracking &bull; Web Dashboard</div>
+                <p>Web-based inbound flow monitoring integrated with FMC. Tracks VRIDs, pallets, units, and door assignments in real time.</p>
+                <ul class="project-features">
+                    <li>Live VRID monitoring with pallet and unit counts</li>
+                    <li>Door assignment tracking per VRID</li>
+                    <li>Performance metrics and KPI dashboards</li>
+                    <li>Multi-user profiles with per-user credentials</li>
+                </ul>
+                <div class="project-tech">
+                    <span>Python</span><span>Flask</span><span>HTML/CSS/JS</span><span>Selenium</span><span>FMC API</span>
+                </div>
             </div>
 
             <!-- SafeShiftHub -->
@@ -253,20 +253,22 @@
                 <p>Production queries powering operational dashboards and safety reporting across the distribution network.</p>
             </div>
 
-            <!-- Inventory Dwell Time -->
+            <!-- High Value Inventory Monitor -->
             <div class="project-card" data-category="sql">
-                <div class="project-icon"><i data-lucide="clock" style="width:28px;height:28px;color:var(--accent-light)"></i></div>
-                <h3>Inventory Dwell Time Analysis</h3>
-                <div class="project-subtitle">Facility Audit &bull; Inventory Intelligence</div>
-                <p>Multi-join analytical query calculating container dwell times across an entire distribution center with window functions and spatial bin parsing.</p>
+                <div class="project-icon"><i data-lucide="gem" style="width:28px;height:28px;color:var(--accent-light)"></i></div>
+                <h3>High Value Inventory Monitor</h3>
+                <div class="project-subtitle">Inventory Intelligence &bull; Risk Enrichment</div>
+                <p>A large-scale enrichment query that joins pallet and bin inventory against a dozen ASIN dimension tables &mdash; surfacing MSRP, HRV status, hazmat/liquid flags, shelf life, dwell time, and last stow/pick attribution for high-value and at-risk items across the site.</p>
                 <ul class="project-features">
-                    <li>12+ table joins across containers, stow metrics, pick actions</li>
-                    <li>Window functions to isolate most recent stow/pick per bin</li>
-                    <li>Spatial bin parsing (mod, aisle, level, slot) for heatmaps</li>
+                    <li>13-table join enriching inventory with MSRP, HRV, hazmat &amp; shelf-life data</li>
+                    <li>Bin and pallet-level resolution with disposition and consumer-type flags</li>
+                    <li>Dwell-time, last stow/pick login, and disposition-flip attribution</li>
+                    <li>Spark-tuned (adaptive query, skew-join, broadcast) to prevent shuffle OOM at scale</li>
                 </ul>
                 <div class="project-tech">
-                    <span>SQL</span><span>Redshift</span><span>Window Functions</span><span>CTEs</span><span>Temp Tables</span>
+                    <span>SparkSQL</span><span>Redshift</span><span>Multi-Table Joins</span><span>Window Functions</span><span>Spark Tuning</span>
                 </div>
+                <button class="screenshot-btn" onclick="openLightbox(['screenshots/inv.png','screenshots/inv1.png','screenshots/inv2.png'])">View Screenshots</button>
             </div>
 
             <!-- Overweight Package Safety -->
@@ -284,24 +286,6 @@
                     <span>SQL</span><span>Redshift</span><span>CTEs</span><span>Multi-Table Joins</span><span>Automated Alerting</span>
                 </div>
                 <button class="screenshot-btn" onclick="openLightbox(['screenshots/psr.png','screenshots/psr1.png','screenshots/psr2.png','screenshots/psr3.png','screenshots/psr4.png','screenshots/psr5.png','screenshots/psr6.png','screenshots/psr7.png','screenshots/psr8.png'])">View Screenshots</button>
-            </div>
-
-            <!-- High Value Inventory Monitor -->
-            <div class="project-card" data-category="sql">
-                <div class="project-icon"><i data-lucide="gem" style="width:28px;height:28px;color:var(--accent-light)"></i></div>
-                <h3>High Value Inventory Monitor</h3>
-                <div class="project-subtitle">Inventory Intelligence &bull; Risk Enrichment</div>
-                <p>A large-scale enrichment query that joins pallet and bin inventory against a dozen ASIN dimension tables &mdash; surfacing MSRP, HRV status, hazmat/liquid flags, shelf life, dwell time, and last stow/pick attribution for high-value and at-risk items across the site.</p>
-                <ul class="project-features">
-                    <li>13-table join enriching inventory with MSRP, HRV, hazmat &amp; shelf-life data</li>
-                    <li>Bin and pallet-level resolution with disposition and consumer-type flags</li>
-                    <li>Dwell-time, last stow/pick login, and disposition-flip attribution</li>
-                    <li>Spark-tuned (adaptive query, skew-join, broadcast) to prevent shuffle OOM at scale</li>
-                </ul>
-                <div class="project-tech">
-                    <span>SparkSQL</span><span>Redshift</span><span>Multi-Table Joins</span><span>Window Functions</span><span>Spark Tuning</span>
-                </div>
-                <button class="screenshot-btn" onclick="openLightbox(['screenshots/inv.png','screenshots/inv1.png','screenshots/inv2.png'])">View Screenshots</button>
             </div>
 
             <!-- Stow Defect Injection -->
@@ -338,6 +322,22 @@
                     <span>SQL</span><span>SparkSQL</span><span>Multi-Table Joins</span><span>CTEs</span><span>Window Functions</span>
                 </div>
                 <button class="screenshot-btn" onclick="openLightbox(['screenshots/mg_pick.png','screenshots/mg_stow.png','screenshots/mg_pickstow.png','screenshots/mg_pickstow2.png','screenshots/mg_pickstow1.png'])">View Screenshots</button>
+            </div>
+
+            <!-- Inventory Dwell Time -->
+            <div class="project-card" data-category="sql">
+                <div class="project-icon"><i data-lucide="clock" style="width:28px;height:28px;color:var(--accent-light)"></i></div>
+                <h3>Inventory Dwell Time Analysis</h3>
+                <div class="project-subtitle">Facility Audit &bull; Inventory Intelligence</div>
+                <p>Multi-join analytical query calculating container dwell times across an entire distribution center with window functions and spatial bin parsing.</p>
+                <ul class="project-features">
+                    <li>12+ table joins across containers, stow metrics, pick actions</li>
+                    <li>Window functions to isolate most recent stow/pick per bin</li>
+                    <li>Spatial bin parsing (mod, aisle, level, slot) for heatmaps</li>
+                </ul>
+                <div class="project-tech">
+                    <span>SQL</span><span>Redshift</span><span>Window Functions</span><span>CTEs</span><span>Temp Tables</span>
+                </div>
             </div>
 
             <!-- Cubic Feet -->
