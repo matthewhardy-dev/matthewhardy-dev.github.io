@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software Development | Work Samples | Matthew Hardy</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Inter:wght@300;400;500;600;700&family=Saira:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<canvas id="particles"></canvas>
+<span style="font-family:'Saira';font-weight:700;position:absolute;opacity:0;pointer-events:none;">@</span>
+<nav>
+<div class="nav-inner">
+<a href="../index.html" class="nav-logo">M@H</a>
+<div class="nav-links">
+<a href="../index.html">Home</a>
+<a href="../projects.html">Projects</a>
+<a href="index.html" class="active">Work Samples</a>
+<a href="../index.html#contact">Contact</a>
+<a href="../resumes/Matthew_Hardy_Resume.pdf" download class="nav-cta">&#11015; Resume</a>
+</div>
+<button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</div>
+</nav>
+
+<div class="container">
+<div class="page-header">
+<div class="breadcrumb"><a href="index.html">Work Samples</a> &rsaquo; Software Development</div>
+<h1>Developed 20+ Production Tools, Live Dashboards, and Cloud Applications</h1>
+<p class="page-desc">Built and deployed 20+ production applications &mdash; Python desktop tools compiled to .exe via PyInstaller, web dashboards, Tampermonkey userscripts, and serverless cloud apps &mdash; maintained in a master repository and adopted across 7 sites.</p>
+<div class="page-meta">
+<span class="meta-item"><i data-lucide="calendar" style="width:14px;height:14px"></i> <strong>Aug 2024 &ndash; Oct 2026</strong></span>
+<span class="meta-item"><i data-lucide="package" style="width:14px;height:14px"></i> 20+ Production Apps &bull; 7 Sites</span>
+</div>
+<div class="lp-badges" style="margin-top:1rem">
+<span class="lp-badge">Customer Obsession</span>
+<span class="lp-badge">Invent and Simplify</span>
+<span class="lp-badge">Ownership</span>
+</div>
+</div>
+
+<div class="stats-bar" style="grid-template-columns:repeat(4,1fr)">
+<div class="stat-box"><div class="num">20+</div><span class="label">Production Apps</span></div>
+<div class="stat-box"><div class="num">7</div><span class="label">Sites Adopted</span></div>
+<div class="stat-box"><div class="num">~$33</div><span class="label">/mo Cloud Cost</span></div>
+<div class="stat-box"><div class="num">1500+</div><span class="label">Lines (Andon)</span></div>
+</div>
+
+<!-- PYTHON DESKTOP TOOLS -->
+<div class="section-divider" style="border:none;padding-top:0">
+<h2><i data-lucide="monitor" style="width:20px;height:20px"></i> Python Desktop Tools</h2>
+<p>Compiled to .exe via PyInstaller &mdash; peers reverse-engineer these due to operational value</p>
+</div>
+
+<div class="project-grid">
+
+<div class="card">
+<div class="card-icon"><i data-lucide="bell-ring" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Andon Monitor v1.5.1</h3>
+<div class="card-sub">1500+ Lines &bull; Real-Time UCO &bull; COM Automation</div>
+<p>Real-time UCO monitoring with hidden Chrome, Midway auto-login, dwell time analysis, pivot tables via COM automation, and top-puller leaderboards. Auto-refresh every 15 minutes with session persistence.</p>
+<ul>
+<li>Multi-page pagination scraping for complete data</li>
+<li>Clickable CSV exports by type, dwell, or puller</li>
+<li>Automated login with security key authentication</li>
+</ul>
+<div class="tech">
+<span>Python</span><span>Tkinter</span><span>Selenium</span><span>Win32 API</span><span>Excel COM</span><span>Threading</span>
+</div>
+<button class="ss-btn" onclick="openLightbox(['../screenshots/Andonmonitor.png','../screenshots/andonmonitor2.png','../screenshots/andonmonitor3.png','../screenshots/andonmonitor4.png','../screenshots/andonmonitor5.png','../screenshots/andonmonitor6.png','../screenshots/andonmonitor7.png'])">View Screenshots</button>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="flame" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Goldilocks Capacity Platform</h3>
+<div class="card-sub">13x Speed &bull; Heatmaps &bull; Lock/Unlock &bull; Multi-Warehouse</div>
+<p>Desktop app monitoring bin/bay/aisle utilization in real time. 13x speed improvement via direct HTTP calls replacing browser scraping. Color-coded heatmaps with facility-map class-N mapping.</p>
+<ul>
+<li>One-click lock/unlock with bulk CSV upload</li>
+<li>API parameter capture and caching for direct-mode</li>
+<li>15-minute auto-refresh with multi-warehouse support</li>
+</ul>
+<div class="tech">
+<span>Python</span><span>Tkinter</span><span>Selenium</span><span>REST APIs</span><span>OpenPyXL</span><span>Threading</span>
+</div>
+<button class="ss-btn" onclick="openLightbox(['../screenshots/Goldilocks4.png','../screenshots/Goldilocks.png','../screenshots/Goldilocks1.png','../screenshots/Goldilock2.png','../screenshots/Goldilocks3.png','../screenshots/Goldilocks6.png','../screenshots/Goldilocks7.png','../screenshots/Goldilocks8.png','../screenshots/Goldilocks9.png'])">View Screenshots</button>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="trash-2" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Auto Delete &amp; Auto Sideline</h3>
+<div class="card-sub">Headless Chrome &bull; Bulk Disposition &bull; Excel Logs</div>
+<p>Automated bulk deletion with 5 deletion reason types and tool-based sidelining with confirm/change flow. Session reuse across runs. Structured Excel logs with ASIN, disposition, and cost.</p>
+<div class="tech">
+<span>Python</span><span>Selenium</span><span>Tkinter</span><span>OpenPyXL</span><span>Threading</span>
+</div>
+<button class="ss-btn" onclick="openLightbox(['../screenshots/autodeletesideline.png','../screenshots/autodeletesideline1.png'])">View Screenshots</button>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="combine" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Delete+Sideline Combo</h3>
+<div class="card-sub">Dual-Tab &bull; FC Research Pull &bull; Damaged/Unreturnable</div>
+<p>Combined deletion and sidelining in a single dual-tab interface. Includes FC Research pull variant for damaged/unreturnable items with progress tracking.</p>
+<div class="tech">
+<span>Python</span><span>Selenium</span><span>Tkinter</span><span>OpenPyXL</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="move" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Auto Move (DZ-to-DZ)</h3>
+<div class="card-sub">Container Movement &bull; Headless Chrome</div>
+<p>Automated drop-zone to drop-zone container movement via headless Chrome. Handles authentication, navigation, and bulk operations.</p>
+<div class="tech">
+<span>Python</span><span>Selenium</span><span>Tkinter</span><span>Threading</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="edit" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Edit Items</h3>
+<div class="card-sub">Bulk AFT &bull; Container State Changes</div>
+<p>Bulk AFT container state changes via automated browser interaction. Handles multiple item types and state transitions.</p>
+<div class="tech">
+<span>Python</span><span>Selenium</span><span>Tkinter</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="refresh-cw" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>PickShort to Pending AutoFlip</h3>
+<div class="card-sub">Streamlit &bull; Tkinter &bull; Daemon Variants</div>
+<p>Automated pick-short to pending disposition flipping. Built in three variants: Streamlit web UI, Tkinter desktop, and background daemon for continuous operation.</p>
+<div class="tech">
+<span>Python</span><span>Streamlit</span><span>Tkinter</span><span>Daemon</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="timer" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Time on Task Reporter</h3>
+<div class="card-sub">GUI + REST API &bull; 8 Warehouses</div>
+<p>Productivity monitoring tool with both GUI and REST API interfaces. Serves 8 warehouses with configurable thresholds and real-time scan gap detection.</p>
+<div class="tech">
+<span>Python</span><span>Flask</span><span>Tkinter</span><span>REST APIs</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="bar-chart-3" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Stow Deep Dive</h3>
+<div class="card-sub">Real-Time Stow Analysis</div>
+<p>Real-time stow analysis tool providing deep-dive visibility into stow operations, defect rates, and associate performance metrics.</p>
+<div class="tech">
+<span>Python</span><span>Pandas</span><span>Tkinter</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="thermometer" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>DZ+PA Monitor Heat Map</h3>
+<div class="card-sub">Drop Zone &bull; Pick Area &bull; Visualization</div>
+<p>Heat map visualization of drop zone and pick area utilization. Color-coded capacity display for quick operational assessment.</p>
+<div class="tech">
+<span>Python</span><span>Tkinter</span><span>REST APIs</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="download" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>PPA Pull</h3>
+<div class="card-sub">Data Pull GUI &bull; Export</div>
+<p>GUI-based data pull tool for PPA metrics. Configurable parameters with Excel export.</p>
+<div class="tech">
+<span>Python</span><span>Tkinter</span><span>OpenPyXL</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="layout-grid" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>ALLinONE Launcher</h3>
+<div class="card-sub">Master Tool Hub &bull; 30+ Tools</div>
+<p>Unified launcher providing single-click access to the entire tool suite. Manages updates, configurations, and tool dependencies across the network.</p>
+<div class="tech">
+<span>Python</span><span>Tkinter</span><span>PyInstaller</span>
+</div>
+</div>
+
+</div>
+
+<!-- WEB DASHBOARDS -->
+<div class="section-divider">
+<h2><i data-lucide="globe" style="width:20px;height:20px"></i> Web Dashboards &amp; Cloud Apps</h2>
+<p>Serverless applications and live dashboards on AWS</p>
+</div>
+
+<div class="project-grid">
+
+<div class="card full">
+<div class="card-icon"><i data-lucide="radio-tower" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>SSD DC Live Dashboard</h3>
+<div class="card-sub">Terraform &bull; WebSocket &bull; React &bull; DynamoDB &bull; ~$33/mo</div>
+<p>Full-stack serverless dashboard: Terraform IaC, Lambda (poller + WebSocket + scan_ingest + stream_broadcaster), Athena via Glue catalog, DynamoDB, API Gateway WebSocket, React + CloudFront frontend, 14 SQL queries. Approximately $33/month operating cost.</p>
+<ul>
+<li>Real-time WebSocket push to all connected clients</li>
+<li>Lambda poller ingests scan data on schedule</li>
+<li>14 Andes SQL queries powering all views</li>
+</ul>
+<div class="tech">
+<span>Terraform</span><span>Lambda</span><span>DynamoDB</span><span>API Gateway</span><span>WebSocket</span><span>React</span><span>CloudFront</span><span>Athena</span><span>Glue</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="truck" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>IB Inbound Flow Monitor</h3>
+<div class="card-sub">Flask &bull; FMC Integration &bull; Multi-User</div>
+<p>Web-based inbound flow monitoring integrated with FMC logistics API. Tracks inbound shipments, pallets, units, and door assignments in real time. Multi-user profiles with per-user credentials.</p>
+<div class="tech">
+<span>Python</span><span>Flask</span><span>HTML/CSS/JS</span><span>Selenium</span><span>REST APIs</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="presentation" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>QuickSight Embedded Dashboard</h3>
+<div class="card-sub">Signed URLs &bull; No-Login Access &bull; Leadership</div>
+<p>Embedded QuickSight dashboard via Lambda-generated signed embed URLs, API Gateway, S3 + CloudFront. No-login access for leadership &mdash; just click and view.</p>
+<div class="tech">
+<span>QuickSight</span><span>Lambda</span><span>API Gateway</span><span>S3</span><span>CloudFront</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="bot" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Amazon Q Business Agent</h3>
+<div class="card-sub">Lambda Actions &bull; OpenAPI &bull; Terraform IaC</div>
+<p>Amazon Q Business agent framework with Lambda actions, OpenAPI specs, and Terraform IaC &mdash; enabling natural-language querying of operational data and allowing other analysts to build data agents.</p>
+<div class="tech">
+<span>Amazon Q</span><span>Lambda</span><span>OpenAPI</span><span>Terraform</span>
+</div>
+</div>
+
+</div>
+
+<!-- JAVASCRIPT & USERSCRIPTS -->
+<div class="section-divider">
+<h2><i data-lucide="code" style="width:20px;height:20px"></i> JavaScript &amp; Browser Userscripts</h2>
+<p>Tampermonkey scripts and browser extensions enhancing internal tools</p>
+</div>
+
+<div class="project-grid">
+
+<div class="card">
+<div class="card-icon"><i data-lucide="dollar-sign" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>SSD DC Cost Script v3.2.2</h3>
+<div class="card-sub">Tampermonkey &bull; Self-Healing &bull; FCLM Extraction</div>
+<p>Self-healing cost extraction from FCLM via Tampermonkey. Automatically adapts to DOM changes and injects cost data into the interface.</p>
+<div class="tech">
+<span>JavaScript</span><span>Tampermonkey</span><span>DOM Manipulation</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="puzzle" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>QI &amp; Inventory Userscripts</h3>
+<div class="card-sub">FC Research Injection &bull; Inventory History</div>
+<p>Browser userscripts injecting QI data into FC Research and enhancing inventory lookup. inventory_history_checker.user.js and qi-fcresearch-injection.user.js.</p>
+<div class="tech">
+<span>JavaScript</span><span>Tampermonkey</span><span>DOM Injection</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="file-spreadsheet" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>SSD DC TNL Snapshot</h3>
+<div class="card-sub">Network-Wide &bull; Selenium + VBA</div>
+<p>Network-wide Total Net Loss snapshot tool combining Selenium web scraping with VBA Excel automation for formatted leadership reports.</p>
+<div class="tech">
+<span>Selenium</span><span>VBA</span><span>Excel</span><span>Python</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="shield-check" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>SafeShiftHub Slack Integration</h3>
+<div class="card-sub">Webhooks &bull; 5hr/5000lb Alerts &bull; Rotation Status</div>
+<p>Slack webhook integration surfacing safety alerts in real time &mdash; flagging associates exceeding 5-hour or 5,000-lb thresholds, posting rotation status, and logging shift startups.</p>
+<div class="tech">
+<span>Python</span><span>Slack API</span><span>Webhooks</span><span>Excel/VBA</span>
+</div>
+</div>
+
+</div>
+
+<div class="collab-box">
+<h4>Collaborators</h4>
+<div class="collab-list">
+<span>guwakwe</span><span>nuneadon (Adonis)</span><span>Duck W Orth</span><span>Ryan Kamarer</span><span>Colton Zinn</span><span>Dipesh Pokhrel</span><span>Ashley Sweigart</span><span>Oscar Onayan</span>
+</div>
+</div>
+
+<div style="text-align:center;margin:3rem 0">
+<a href="data-engineering.html" style="color:var(--text-muted);font-size:.88rem;text-decoration:none;margin-right:2rem">&larr; Data Engineering</a>
+<a href="warehouse-operations.html" style="color:var(--accent-light);font-weight:600;font-size:.95rem;text-decoration:none">Next: Warehouse Operations &rarr;</a>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-status"><span class="status-dot"></span> Building at scale. Always learning.</div>
+<p>&copy; <span id="year"></span> Matthew Hardy. All rights reserved.</p>
+</footer>
+
+<div id="lightbox" onclick="if(event.target===this)closeLightbox()">
+<button class="close-btn" onclick="closeLightbox()">&times;</button>
+<div id="lightbox-content"></div>
+</div>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+(async()=>{await document.fonts.ready;await document.fonts.load("bold 42px 'Saira'");const c=document.createElement('canvas');c.width=64;c.height=64;const x=c.getContext('2d');x.beginPath();x.roundRect(0,0,64,64,12);x.fillStyle='#0a0f1a';x.fill();x.font="bold 42px 'Saira'";x.fillStyle='#7c3aed';x.textAlign='center';x.textBaseline='middle';x.fillText('@',32,36);const l=document.querySelector("link[rel='icon']");if(l)l.href=c.toDataURL('image/png')})();
+document.querySelector('.nav-toggle').addEventListener('click',()=>document.querySelector('.nav-links').classList.toggle('active'));
+const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}})},{threshold:.1});
+document.querySelectorAll('.card,.stat-box').forEach((el,i)=>{el.classList.add('fade-in');el.style.transitionDelay=`${i*60}ms`;obs.observe(el)});
+function openLightbox(imgs){const lb=document.getElementById('lightbox');const c=document.getElementById('lightbox-content');c.innerHTML=imgs.map(s=>'<img src="'+s+'" style="width:100%;border-radius:8px;border:1px solid rgba(124,58,237,0.3)" loading="lazy" onerror="this.style.display=\'none\'">').join('');lb.style.display='block';document.body.style.overflow='hidden'}
+function closeLightbox(){document.getElementById('lightbox').style.display='none';document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');let particles=[];
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+window.addEventListener('resize',resize);resize();
+for(let i=0;i<60;i++)particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*2+1});
+(function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach((p,i)=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>canvas.width)p.vx*=-1;if(p.y<0||p.y>canvas.height)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(167,139,250,0.8)';ctx.fill();for(let j=i+1;j<particles.length;j++){const dx=p.x-particles[j].x,dy=p.y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<150){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(167,139,250,${.4*(1-d/150)})`;ctx.stroke()}}});requestAnimationFrame(draw)})();
+lucide.createIcons();
+</script>
+</body>
+</html>

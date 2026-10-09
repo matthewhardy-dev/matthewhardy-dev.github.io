@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Engineering | Work Samples | Matthew Hardy</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Inter:wght@300;400;500;600;700&family=Saira:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<canvas id="particles"></canvas>
+<span style="font-family:'Saira';font-weight:700;position:absolute;opacity:0;pointer-events:none;">@</span>
+<nav>
+<div class="nav-inner">
+<a href="../index.html" class="nav-logo">M@H</a>
+<div class="nav-links">
+<a href="../index.html">Home</a>
+<a href="../projects.html">Projects</a>
+<a href="index.html" class="active">Work Samples</a>
+<a href="../index.html#contact">Contact</a>
+<a href="../resumes/Matthew_Hardy_Resume.pdf" download class="nav-cta">&#11015; Resume</a>
+</div>
+<button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</div>
+</nav>
+
+<div class="container">
+<div class="page-header">
+<div class="breadcrumb"><a href="index.html">Work Samples</a> &rsaquo; Data Engineering</div>
+<h1>Built and Own the SSD DC Network Data Engineering Platform</h1>
+<p class="page-desc">Provisioned and own two AWS accounts from scratch. Built 12 automated ETL pipelines, 35+ production SQL queries, and a serverless analytics platform delivering daily reports to 30+ stakeholders across 7 distribution centers with zero manual intervention.</p>
+<div class="page-meta">
+<span class="meta-item"><i data-lucide="calendar" style="width:14px;height:14px"></i> <strong>Aug 2024 &ndash; Oct 2026</strong></span>
+<span class="meta-item"><i data-lucide="building-2" style="width:14px;height:14px"></i> HPA1, HNE1, HMD3, HTX3, HMW3, HLA6, HGA6, HDC3</span>
+</div>
+<div class="lp-badges" style="margin-top:1rem">
+<span class="lp-badge">Ownership</span>
+<span class="lp-badge">Invent and Simplify</span>
+<span class="lp-badge">Deliver Results</span>
+</div>
+</div>
+
+<div class="stats-bar" style="grid-template-columns:repeat(4,1fr)">
+<div class="stat-box"><div class="num">2</div><span class="label">AWS Accounts</span></div>
+<div class="stat-box"><div class="num">12</div><span class="label">ETL Pipelines</span></div>
+<div class="stat-box"><div class="num">35+</div><span class="label">SQL Queries</span></div>
+<div class="stat-box"><div class="num">120+</div><span class="label">Security Findings</span></div>
+</div>
+
+<!-- AWS INFRASTRUCTURE -->
+<div class="section-divider" style="border:none;padding-top:0">
+<h2><i data-lucide="cloud" style="width:20px;height:20px"></i> AWS Infrastructure</h2>
+<p>Two accounts provisioned and owned end-to-end</p>
+</div>
+
+<div class="project-grid">
+
+<div class="card">
+<div class="card-icon"><i data-lucide="server" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>AWS Account Provisioning</h3>
+<div class="card-sub">data-forge (447733314315) &bull; SSD-DC (734412930474)</div>
+<p>Provisioned two AWS accounts from scratch: IAM roles with least-privilege policies, S3 buckets, EC2 fleet, Cloud Desktops with SSH access, CloudFront distributions, Glue jobs, Lambda functions, Redshift workgroups, QuickSight datasets/analyses/dashboards, EventBridge Scheduler cron triggers, SES verified identities, Athena workgroups, Data Firehose streams, and CloudFormation templates.</p>
+<ul>
+<li>Set up Bindles for production analytics infrastructure</li>
+<li>EC2 fleet and multiple Cloud Desktops with SSH access</li>
+<li>CloudFormation IaC for repeatable deployments</li>
+</ul>
+<div class="tech">
+<span>IAM</span><span>S3</span><span>EC2</span><span>CloudFront</span><span>Glue</span><span>Lambda</span><span>Redshift</span><span>QuickSight</span><span>EventBridge</span><span>SES</span><span>Athena</span><span>Firehose</span><span>CloudFormation</span>
+</div>
+<button class="ss-btn" onclick="openLightbox(['../screenshots/aws_account.png','../screenshots/fleet.png','../screenshots/cloud.png','../screenshots/ssh.png'])">View Screenshots</button>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="shield-check" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Security &amp; Compliance</h3>
+<div class="card-sub">ASR &bull; 120+ Findings &bull; Shepard Remediation</div>
+<p>Completed a formal Application Security Review (ASR), working directly with AWS Security reviewers through ring classification disputes and SecurityAuditRole creation. Self-remediated 120+ security findings via Shepard spanning GuardDuty, AWS Config, VPC Flow Logs, Route 53 Resolver logging, Network Access Analyzer, and host monitoring across all active regions.</p>
+<ul>
+<li>Ring classification disputes resolved with security team</li>
+<li>SecurityAuditRole creation and configuration</li>
+<li>Full coverage across all active regions</li>
+</ul>
+<div class="tech">
+<span>GuardDuty</span><span>AWS Config</span><span>VPC Flow Logs</span><span>Route 53</span><span>Network Access Analyzer</span><span>Shepard</span>
+</div>
+</div>
+
+</div>
+
+<!-- SCORECARD & DASHBOARDS -->
+<div class="section-divider">
+<h2><i data-lucide="layout-dashboard" style="width:20px;height:20px"></i> Scorecard &amp; Dashboards</h2>
+<p>Executive-ready analytics serving leadership across the network</p>
+</div>
+
+<div class="project-grid">
+
+<div class="card full">
+<div class="card-icon"><i data-lucide="bar-chart-3" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>SSD DC Scorecard</h3>
+<div class="card-sub">3-View Dashboard &bull; 11 Datasets &bull; 7 Sites &bull; CloudFront + S3</div>
+<p>Architected the SSD DC Scorecard with 3 dashboard views (Leadership KPIs, Ops real-time, Engineer diagnostics) across 11 datasets on CloudFront with S3 Origin Access Control. Built a phased QuickSight roadmap. 30+ stakeholders from L4 through L7 rely on this data daily.</p>
+<div class="tech">
+<span>Redshift</span><span>QuickSight</span><span>S3</span><span>CloudFront</span><span>Chart.js</span><span>SQL</span><span>OAC</span>
+</div>
+<button class="ss-btn" onclick="openLightbox(['../screenshots/scorecard.png','../screenshots/scorecard1.png','../screenshots/scorecard2.png'])">View Screenshots</button>
+</div>
+
+</div>
+
+<!-- ETL PIPELINES -->
+<div class="section-divider">
+<h2><i data-lucide="workflow" style="width:20px;height:20px"></i> ETL Pipelines &amp; Automation</h2>
+<p>Scheduled data flows powering dashboards and email reports</p>
+</div>
+
+<div class="project-grid">
+
+<div class="card">
+<div class="card-icon"><i data-lucide="repeat" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>12 Automated ETL Pipelines</h3>
+<div class="card-sub">Cradle &bull; Datanet &bull; SparkSQL &bull; S3 &bull; QuickSight</div>
+<p>Built 12 automated ETL pipelines via Cradle/Datanet, scheduling SparkSQL jobs into S3 feeding QuickSight. Optimized 8 Cradle job execution times, cutting dependency wait from 11&ndash;17 hours to under 1 hour.</p>
+<div class="tech">
+<span>Cradle</span><span>Datanet</span><span>SparkSQL</span><span>S3</span><span>QuickSight</span><span>EventBridge</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="database" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Serverless Inventory Pipeline</h3>
+<div class="card-sub">Athena UNLOAD &bull; 6.4 GB+ Daily &bull; ~$0.22/day</div>
+<p>Serverless inventory pipeline splitting 6.4 GB+ daily CSVs into per-warehouse folders via Athena UNLOAD at ~$0.22/day operating cost.</p>
+<div class="tech">
+<span>Athena</span><span>S3</span><span>Glue Catalog</span><span>Lambda</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="mail" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Automated Email Reporting</h3>
+<div class="card-sub">Lambda &bull; SES &bull; 8:45 AM ET &bull; Zero Intervention</div>
+<p>Daily QSC email delivering 8 report CSVs to stakeholders at 8:45 AM ET via Lambda/SES. Separate HPA1 MGP pivot at 7 AM ET. Reports arrive before start of business daily across all 7 sites with zero human intervention.</p>
+<div class="tech">
+<span>Lambda</span><span>SES</span><span>EventBridge</span><span>S3</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="file-code" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>HPA1 Inventory Report Pipeline</h3>
+<div class="card-sub">CloudFormation IaC &bull; End-to-End Serverless</div>
+<p>Full pipeline via CloudFormation IaC: EventBridge &rarr; Glue &rarr; Redshift &rarr; S3 &rarr; Lambda &rarr; SES. Glue ETL scripts ingesting S3 into Redshift.</p>
+<div class="tech">
+<span>CloudFormation</span><span>EventBridge</span><span>Glue</span><span>Redshift</span><span>Lambda</span><span>SES</span>
+</div>
+</div>
+
+</div>
+
+<!-- SQL QUERIES -->
+<div class="section-divider">
+<h2><i data-lucide="terminal" style="width:20px;height:20px"></i> Production SQL Queries</h2>
+<p>35+ queries powering dashboards, safety reporting, and operational accountability</p>
+</div>
+
+<div class="project-grid">
+
+<div class="card">
+<div class="card-icon"><i data-lucide="gem" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>High Value Inventory Monitor</h3>
+<div class="card-sub">13-Table Join &bull; MSRP &bull; HRV &bull; Hazmat</div>
+<p>Large-scale enrichment query joining pallet and bin inventory against a dozen ASIN dimension tables &mdash; surfacing MSRP, HRV status, hazmat/liquid flags, shelf life, dwell time, and last stow/pick attribution.</p>
+<ul>
+<li>Spark-tuned (adaptive query, skew-join, broadcast) to prevent shuffle OOM</li>
+<li>Bin and pallet-level resolution with disposition flags</li>
+</ul>
+<div class="tech">
+<span>SparkSQL</span><span>Redshift</span><span>Window Functions</span><span>Spark Tuning</span>
+</div>
+<button class="ss-btn" onclick="openLightbox(['../screenshots/inv.png','../screenshots/inv1.png','../screenshots/inv2.png'])">View Screenshots</button>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="alert-triangle" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Overweight Package Safety</h3>
+<div class="card-sub">CTE Pipeline &bull; 50lb Threshold &bull; Safety Alerting</div>
+<p>CTE-based query identifying packages exceeding 50 lbs. Feeds automated daily email alerts routing flagged items to safety teams. Directly reduced workplace injuries through rerouting.</p>
+<div class="tech">
+<span>SQL</span><span>Redshift</span><span>CTEs</span><span>Automated Alerting</span>
+</div>
+<button class="ss-btn" onclick="openLightbox(['../screenshots/psr.png','../screenshots/psr1.png','../screenshots/psr2.png','../screenshots/psr3.png','../screenshots/psr4.png'])">View Screenshots</button>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="zap" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Stow Defect Injection</h3>
+<div class="card-sub">Movement Chain &bull; Attribution &bull; 180-Day Lookback</div>
+<p>Reconstructs the full movement chain for quarantine items &mdash; tracing placement through first stow to drop-zone scan to attribute the responsible associate. Daily midnight snapshot, 180-day lookback.</p>
+<div class="tech">
+<span>SparkSQL</span><span>CTEs</span><span>Window Functions</span><span>Scheduled ETL</span>
+</div>
+<button class="ss-btn" onclick="openLightbox(['../screenshots/sdi.png','../screenshots/sdi1.png','../screenshots/sdi1_1.png','../screenshots/sdi2_1.png','../screenshots/sdi3.png'])">View Screenshots</button>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="git-merge" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Stow Overlap</h3>
+<div class="card-sub">Cross-Query Join &bull; Root-Cause Analysis</div>
+<p>Cross-references responsible-associate logins from Stow Defect Injection against rapid-scan stow report, returning only the intersection for precise accountability.</p>
+<div class="tech">
+<span>SparkSQL</span><span>Multi-Table Joins</span><span>CTEs</span><span>Window Functions</span>
+</div>
+<button class="ss-btn" onclick="openLightbox(['../screenshots/mg_stow.png','../screenshots/mg_pickstow.png','../screenshots/sdo.png','../screenshots/sdo1.png','../screenshots/sdo2.png'])">View Screenshots</button>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="clock" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Inventory Dwell Time Analysis</h3>
+<div class="card-sub">12+ Table Joins &bull; Spatial Bin Parsing</div>
+<p>Multi-join analytical query calculating container dwell times across an entire distribution center with window functions and spatial bin parsing (mod, aisle, level, slot) for heatmaps.</p>
+<div class="tech">
+<span>SQL</span><span>Redshift</span><span>Window Functions</span><span>CTEs</span><span>Temp Tables</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="box" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Cubic Feet &amp; Capacity Utilization</h3>
+<div class="card-sub">4 Query Versions &bull; Powers Goldilocks</div>
+<p>Multi-version capacity utilization query calculating cubic feet consumed per bin, aisle, and module. 4 versions (CU_FT_ALL v1/v2, CU_FT_MOD, Cubic_Feet). Feeds real-time capacity heatmaps in Goldilocks.</p>
+<div class="tech">
+<span>SQL</span><span>Redshift</span><span>Aggregations</span><span>Spatial Analysis</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="timer" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Time Off Task (TOT) Detection</h3>
+<div class="card-sub">LAG() Window &bull; Configurable Threshold</div>
+<p>Real-time detection of scan gaps exceeding configurable thresholds using LAG() window function. Rolling 60-minute window for shift-level visibility.</p>
+<div class="tech">
+<span>SQL</span><span>Redshift</span><span>Window Functions</span><span>LAG()</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="database" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Inventory Governance Suite</h3>
+<div class="card-sub">8+ Query Variants &bull; Revenue Protection</div>
+<p>Suite of 8+ inventory queries: Simple, Fast, InDepth, V2, Bin_Info. Container quantity tracking, disposition breakdown, and Who_Flipped_Pending for accountability.</p>
+<div class="tech">
+<span>SQL</span><span>Redshift</span><span>Multi-Table Joins</span><span>CTEs</span>
+</div>
+</div>
+
+</div>
+
+<!-- DATA TOOLS -->
+<div class="section-divider">
+<h2><i data-lucide="wrench" style="width:20px;height:20px"></i> Specialized Data Tools</h2>
+<p>Python applications automating data collection and reporting</p>
+</div>
+
+<div class="project-grid">
+
+<div class="card">
+<div class="card-icon"><i data-lucide="file-text" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>DPT Report App</h3>
+<div class="card-sub">45 min &rarr; 30 sec &bull; Single Click</div>
+<p>Transformed a 45-minute manual report into a single-click 30-second operation. Pulls data from S3, formats, and generates stakeholder-ready output.</p>
+<div class="tech">
+<span>Python</span><span>S3</span><span>Pandas</span><span>OpenPyXL</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="scan" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Bin Etiquette Violation Audit</h3>
+<div class="card-sub">72-Hour Attribution &bull; 3 Andes Datasets</div>
+<p>Automated audit tool performing 72-hour attribution analysis across 3 Andes datasets to identify bin etiquette violations and responsible associates.</p>
+<div class="tech">
+<span>Python</span><span>Andes SQL</span><span>S3</span><span>Pandas</span>
+</div>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="waves" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Daily Wave DPT Scraper</h3>
+<div class="card-sub">Automated Mon&ndash;Fri &bull; Quality System</div>
+<p>Automated scraper pulling damaged inventory data from the quality system on a daily schedule. Feeds governance and deletion cost tracking.</p>
+<div class="tech">
+<span>Python</span><span>Selenium</span><span>Scheduling</span>
+</div>
+<button class="ss-btn" onclick="openLightbox(['../screenshots/FCQuality SSD.png','../screenshots/FCQuality SSD1.png','../screenshots/FCQuality SSD2.png','../screenshots/FCQuality SSD3.png'])">View Screenshots</button>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="package" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>QSC Tools Launcher &amp; Kariba Tracker</h3>
+<div class="card-sub">13+ Tools Unified &bull; Pipeline Integration</div>
+<p>Consolidated 13+ QSC tools into a unified launcher wired into the data pipeline. Kariba Tracker for network-wide metric tracking.</p>
+<div class="tech">
+<span>Python</span><span>Tkinter</span><span>S3</span><span>REST APIs</span>
+</div>
+</div>
+
+</div>
+
+<!-- MENTORSHIP -->
+<div class="section-divider">
+<h2><i data-lucide="users" style="width:20px;height:20px"></i> Mentorship &amp; Knowledge Transfer</h2>
+<p>Enabling other analysts and engineers to build independently</p>
+</div>
+
+<div class="project-grid">
+
+<div class="card full">
+<div class="card-icon"><i data-lucide="graduation-cap" style="width:26px;height:26px;color:var(--accent-light)"></i></div>
+<h3>Data Engineering Mentorship</h3>
+<div class="card-sub">Redshift &bull; QuickSight &bull; Lambda &bull; Glue &bull; Cradle &bull; Datanet</div>
+<p>Mentored multiple data engineers on Redshift, QuickSight, Lambda, Glue, Cradle, and Datanet. Built reusable documentation and tool templates enabling other analysts across the network to build their own automation solutions independently. Recognized as the network go-to for data infrastructure guidance.</p>
+<div class="tech">
+<span>Redshift</span><span>QuickSight</span><span>Lambda</span><span>Glue</span><span>Cradle</span><span>Datanet</span><span>Documentation</span>
+</div>
+</div>
+
+</div>
+
+<div class="collab-box">
+<h4>Collaborators</h4>
+<div class="collab-list">
+<span>Duck W Orth</span><span>Neeraj Bhesania</span><span>Snehith Gandla</span><span>Steve Beach</span><span>Ryan Kamarer</span><span>Mark Kawate</span>
+</div>
+</div>
+
+<div style="text-align:center;margin:3rem 0">
+<a href="software-development.html" style="color:var(--accent-light);font-weight:600;font-size:.95rem;text-decoration:none">Next: Software Development &rarr;</a>
+</div>
+
+</div>
+
+<footer>
+<div class="footer-status"><span class="status-dot"></span> Building at scale. Always learning.</div>
+<p>&copy; <span id="year"></span> Matthew Hardy. All rights reserved.</p>
+</footer>
+
+<div id="lightbox" onclick="if(event.target===this)closeLightbox()">
+<button class="close-btn" onclick="closeLightbox()">&times;</button>
+<div id="lightbox-content"></div>
+</div>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+(async()=>{await document.fonts.ready;await document.fonts.load("bold 42px 'Saira'");const c=document.createElement('canvas');c.width=64;c.height=64;const x=c.getContext('2d');x.beginPath();x.roundRect(0,0,64,64,12);x.fillStyle='#0a0f1a';x.fill();x.font="bold 42px 'Saira'";x.fillStyle='#7c3aed';x.textAlign='center';x.textBaseline='middle';x.fillText('@',32,36);const l=document.querySelector("link[rel='icon']");if(l)l.href=c.toDataURL('image/png')})();
+document.querySelector('.nav-toggle').addEventListener('click',()=>document.querySelector('.nav-links').classList.toggle('active'));
+const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');obs.unobserve(en.target)}})},{threshold:.1});
+document.querySelectorAll('.card,.stat-box').forEach((el,i)=>{el.classList.add('fade-in');el.style.transitionDelay=`${i*60}ms`;obs.observe(el)});
+function openLightbox(imgs){const lb=document.getElementById('lightbox');const c=document.getElementById('lightbox-content');c.innerHTML=imgs.map(s=>'<img src="'+s+'" style="width:100%;border-radius:8px;border:1px solid rgba(124,58,237,0.3)" loading="lazy" onerror="this.style.display=\'none\'">').join('');lb.style.display='block';document.body.style.overflow='hidden'}
+function closeLightbox(){document.getElementById('lightbox').style.display='none';document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
+const canvas=document.getElementById('particles'),ctx=canvas.getContext('2d');let particles=[];
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+window.addEventListener('resize',resize);resize();
+for(let i=0;i<60;i++)particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,r:Math.random()*2+1});
+(function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach((p,i)=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>canvas.width)p.vx*=-1;if(p.y<0||p.y>canvas.height)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(167,139,250,0.8)';ctx.fill();for(let j=i+1;j<particles.length;j++){const dx=p.x-particles[j].x,dy=p.y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<150){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(167,139,250,${.4*(1-d/150)})`;ctx.stroke()}}});requestAnimationFrame(draw)})();
+lucide.createIcons();
+</script>
+</body>
+</html>
